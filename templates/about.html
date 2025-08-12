@@ -1,0 +1,1322 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MeeruCrete Products</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="{% static 'image/logonav.png' %}">
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Roboto&family=Montserrat:wght@400;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- Bootstrap 5 CSS (only one version) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+
+  <!-- Font Awesome 6.5.0 (only one version) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Remixicon (if needed) -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+  <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- Your Custom CSS -->
+  <link rel="stylesheet" href="{% static 'image/css/style.css' %}">
+</head>
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap");
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&display=swap');
+
+  body {
+    background: linear-gradient(135deg, #f3f0eb, #e8e2d9, #f5f2ec);
+    color: #ffffff;
+    font-family: 'Montserrat', Arial, sans-serif;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+
+  }
+
+  /* ------------------------------ */
+  /* SCROLLBAR STYLES */
+  /* ------------------------------ */
+  :root {
+    --yellow: #ffcc00;
+  }
+
+  body::-webkit-scrollbar {
+    width: 1rem;
+  }
+
+  body::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  body::-webkit-scrollbar-thumb {
+    background: var(--yellow);
+  }
+
+
+
+  /* ------------------------------ */
+  /* NAVBAR STYLES */
+  /* ------------------------------ */
+
+  .navbar {
+    background: linear-gradient(to right, #3d0017, #800033, #4f0022);
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    color: white;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0px;
+    /* Fixed gap value */
+    font-size: 31px;
+    color: #ffffff;
+  }
+
+  strong {
+    font-weight: 600;
+  }
+
+  .nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  h1,
+  h2 {
+    font-size: 40px;
+    margin-top: 40px;
+  }
+
+  .logo img {
+    height: 90px;
+  }
+
+
+  .nav-links a {
+    margin-left: 30px;
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 500;
+    transition: 0.3s;
+  }
+
+  .nav-links a:hover {
+    color: rgb(245, 222, 179);
+    font-weight: bold;
+  }
+
+  .nav-links a.active {
+    color: rgb(245, 222, 179);
+    font-weight: bold;
+    border-bottom: 2px solid rgb(245, 222, 179);
+    /* Optional visual */
+  }
+
+
+  /* ------------------------------ */
+  /* Mobile-specific Navbar Styles */
+  /* ------------------------------ */
+
+  /* Between 900px and 250px */
+  @media (max-width: 900px) {
+
+    /* Hide nav-links initially */
+    .nav-links {
+      display: none;
+      /* Hide links on smaller screens */
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      position: absolute;
+      /* Fix the nav to the top */
+      top: 60px;
+      /* Adjust the space from the navbar */
+      left: 0;
+      background-color: #3d0017;
+      /* Set a background color */
+      padding: 20px 0;
+    }
+
+    .nav-links a {
+      margin: 10px 0;
+    }
+
+    /* Show hamburger menu (only on mobile) */
+    .hamburger {
+      display: block;
+      background-color: transparent;
+      border: none;
+      color: #ffffff;
+      font-size: 30px;
+      cursor: pointer;
+    }
+
+    /* When navbar is active, show nav-links */
+    .navbar.active .nav-links {
+      display: flex;
+    }
+  }
+
+  /* Remove nav-links after 900px */
+  @media (min-width: 901px) {
+    .nav-links {
+      display: none !important;
+      /* Hide nav-links on screens greater than 900px */
+    }
+
+    /* Show hamburger button only on smaller screens */
+    .hamburger {
+      display: none !important;
+    }
+  }
+
+  /* Desktop Styles (Larger than 900px) */
+  @media (min-width: 901px) {
+    .nav-links {
+      display: flex !important;
+      /* Always show nav-links on larger screens */
+      flex-direction: row;
+      /* Make nav links appear in a row */
+      justify-content: flex-end;
+      /* Align links to the right */
+    }
+
+    .nav-links a {
+      margin-left: 30px;
+    }
+  }
+
+  /* For screens between 201px and 300px */
+  @media (max-width: 400px) and (min-width: 301px) {
+    .nav-links {
+      flex-direction: column;
+      font-size: 10px;
+    }
+
+    .logo {
+      display: flex;
+
+      align-items: center;
+      gap: 0px;
+      font-size: 18px;
+      color: #ffffff;
+    }
+
+    .nav-links a {
+      margin: 8px 0;
+      font-size: 14px;
+    }
+
+    .logo img {
+      height: 27px;
+    }
+
+    .logo span {
+      font-size: 1.2rem;
+    }
+
+    .hamburger {
+      font-size: 25px;
+    }
+  }
+
+  /* For screens between 201px and 300px */
+  @media (max-width: 300px) and (min-width: 250px) {
+    .nav-links {
+      flex-direction: column;
+      font-size: 10px;
+    }
+
+    .logo {
+      display: flex;
+
+      align-items: center;
+      gap: 0px;
+      font-size: 18px;
+      color: #ffffff;
+    }
+
+    .nav-links a {
+      margin: 8px 0;
+      font-size: 14px;
+    }
+
+    .logo img {
+      height: 27px;
+    }
+
+    .logo span {
+      font-size: 1.2rem;
+    }
+
+    .hamburger {
+      font-size: 25px;
+    }
+  }
+
+  @media (max-width: 250px) and (min-width: 201px) {
+
+    .logo {
+      display: flex;
+
+      align-items: center;
+      gap: 0px;
+      font-size: 18px;
+      color: #ffffff;
+    }
+
+    .logo img {
+      height: 21px;
+    }
+
+    .logo span {
+      font-size: 1rem;
+    }
+
+    .hamburger {
+      font-size: 25px;
+    }
+  }
+
+  /* For screens between 101px and 200px */
+  @media (max-width: 201px) and (min-width: 101px) {
+    .nav-links {
+      flex-direction: column;
+      font-size: 8px;
+    }
+
+    .nav-links a {
+      margin: 6px 0;
+      font-size: 12px;
+    }
+
+    .logo img {
+      height: 26px;
+    }
+
+    .logo span {
+      font-size: 8px;
+    }
+
+    .hamburger {
+      font-size: 22px;
+    }
+  }
+
+  /* For screens 100px and below */
+  @media (max-width: 100px) {
+    .nav-links {
+      flex-direction: column;
+      font-size: 10px;
+    }
+
+    .nav-links a {
+      margin: 4px 0;
+      font-size: 10px;
+    }
+
+    .logo img {
+      max-height: 25px;
+    }
+
+    .logo span {
+      font-size: 0.9rem;
+    }
+
+    .hamburger {
+      font-size: 24px;
+    }
+  }
+
+  .about-section {
+    max-width: 2048px;
+    padding: 80px 100px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    flex-wrap: wrap;
+  }
+
+  .left-images,
+  .right-images {
+    position: relative;
+    width: 50%;
+  }
+
+  .main-img {
+    width: 75%;
+    height: 55vh;
+    border-radius: 6px;
+    object-fit: cover;
+  }
+
+  .sub-img {
+    position: absolute;
+    width: 60%;
+    bottom: -80px;
+    left: 250px;
+    border-radius: 6px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+
+  .right-content,
+  .left-content {
+    width: 45%;
+  }
+
+  /* Animation */
+  .animate-left {
+    animation: slideInLeft 1.2s ease-out;
+  }
+
+  .animate-right {
+    animation: slideInRight 1.2s ease-out;
+  }
+
+  @keyframes slideInLeft {
+    0% {
+      transform: translateX(-100px);
+      opacity: 0;
+    }
+
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideInRight {
+    0% {
+      transform: translateX(100px);
+      opacity: 0;
+    }
+
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  .section-label {
+    color: #440000;
+    font-weight: 500;
+    font-size: 2rem;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .title {
+    font-size: 55px;
+    font-weight: 100;
+    color: #1c1e21;
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+
+  .description {
+    color: #6c6c6c;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+  }
+
+  .list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 40px 0;
+  }
+
+  .list li {
+    margin-bottom: 15px;
+    padding-left: 20px;
+    position: relative;
+    color: #333;
+    font-size: 17px;
+  }
+
+  .list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #f4a742;
+    font-size: 22px;
+    line-height: 1;
+  }
+
+  .btn {
+    padding: 15px 40px;
+    background: #1c1e21;
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 4px;
+    transition: 0.3s;
+  }
+
+  .btn:hover {
+    background: #f4a742;
+    color: #1c1e21;
+  }
+
+  /* 🔁 Responsive Tweaks */
+  @media (max-width: 992px) {
+    .about-section {
+      flex-direction: column;
+      padding: 60px 40px;
+    }
+
+    .left-images,
+    .right-images,
+    .right-content,
+    .left-content {
+      width: 100%;
+    }
+
+    .main-img {
+      width: 100%;
+      height: auto;
+    }
+
+    .sub-img {
+      position: static;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    .title {
+      font-size: 40px;
+    }
+
+    .description {
+      font-size: 16px;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .about-section {
+      padding: 40px 20px;
+      gap: 40px;
+    }
+
+    .title {
+      font-size: 30px;
+    }
+
+    .description {
+      font-size: 15px;
+    }
+
+    .btn {
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  /* ================================
+   UNIVERSAL FOOTER SECTION
+================================ */
+
+  /* Background */
+  .retirement-footer {
+    background-image: url("/static/image/footer.png");
+    background-size: cover;
+    background-position: center;
+    height: auto;
+    padding: 3rem 1rem;
+    color: white;
+    text-align: center;
+  }
+
+  /* Footer Logo/Image */
+  .retirement-footer .footer-logo,
+  img.mb-3 {
+    width: 20%;
+    height: auto;
+    margin-bottom: 1rem;
+  }
+
+  /* Footer Main Heading */
+  #mu {
+    font-size: 3rem;
+    color: #b88d02;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Shining Gradient Text Animation */
+  .retirement-shine-text {
+    font-weight: bold;
+    font-size: 1.5rem;
+    background: linear-gradient(90deg,
+        #ffffff 0%,
+        #ffcc70 20%,
+        #ffffff 40%,
+        #ffcc70 60%,
+        #ffffff 80%);
+    background-size: 200% auto;
+    color: #b88d02;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: retirement-shine 6s linear infinite;
+    margin-bottom: 0.3rem;
+  }
+
+  /* Animation Keyframes */
+  @keyframes retirement-shine {
+    to {
+      background-position: 200% center;
+    }
+  }
+
+  /* Tagline */
+  .retirement-footer p {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #f0f0f0;
+  }
+
+  /* Social Icons Container */
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Social Icon Links */
+  .social-icons a {
+    margin: 0 15px;
+    font-size: 1.8rem;
+    color: white;
+    transition: transform 0.3s, color 0.3s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+  }
+
+  /* Hover Effects */
+  .social-icons a:hover {
+    transform: scale(1.2);
+    color: #ffcc70;
+  }
+
+  /* Copyright */
+  .retirement-footer p.text-white {
+    margin-bottom: 0.3rem;
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  /* ================================
+   RESPONSIVE FOOTER STYLES
+================================ */
+
+  @media (max-width: 768px) {
+
+    .retirement-footer .footer-logo,
+    img.mb-3 {
+      width: 40%;
+    }
+
+    #mu {
+      font-size: 2.2rem;
+    }
+
+    .retirement-shine-text {
+      font-size: 1.2rem;
+    }
+
+    .social-icons a {
+      font-size: 1.5rem;
+      margin: 0 12px;
+    }
+
+    .retirement-footer p {
+      font-size: 0.9rem;
+    }
+
+    section p {
+      font-size: 14px !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+
+    .retirement-footer .footer-logo,
+    img.mb-3 {
+      width: 60%;
+    }
+
+    #mu {
+      font-size: 1.8rem;
+    }
+
+    .retirement-shine-text {
+      font-size: 1rem;
+    }
+
+    .social-icons a {
+      font-size: 1.3rem;
+      margin: 0 10px;
+    }
+
+    .retirement-footer p {
+      font-size: 0.85rem;
+    }
+  }
+
+  @media (max-width: 320px) {
+
+    .retirement-footer .footer-logo,
+    img.mb-3 {
+      width: 80%;
+    }
+
+    #mu {
+      font-size: 1.5rem;
+    }
+
+    .retirement-shine-text {
+      font-size: 0.9rem;
+    }
+
+    .social-icons a {
+      font-size: 1.1rem;
+      margin: 0 8px;
+    }
+
+    .retirement-footer p {
+      font-size: 0.8rem;
+    }
+  }
+
+  .footer-text {
+    margin: 0;
+    padding: 0;
+    line-height: 1.2;
+  }
+
+  .footer-text p {
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+    color: white;
+  }
+
+  /* Slightly lighter color for the developer name */
+  .footer-text p:last-child {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    margin-top: 0.2rem;
+  }
+
+  /* Responsive tweaks */
+  @media (max-width: 576px) {
+    .footer-text p {
+      font-size: 0.8rem;
+    }
+
+    .footer-text p:last-child {
+      font-size: 0.67rem;
+    }
+  }
+
+
+
+  /* Product Dropdown */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #4f0022;
+    min-width: 160px;
+    z-index: 1;
+    border-radius: 4px;
+    top: 100%;
+    left: 0;
+  }
+
+  .dropdown-content a {
+    color: white;
+    padding: 10px 16px;
+    text-decoration: none;
+    display: block;
+    font-weight: 400;
+  }
+
+  .dropdown-content a:hover {
+    background-color: #800033;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  /* Preloader Base */
+  #loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #f3f0eb, #e8e2d9, #f5f2ec);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease;
+  }
+
+  /* Rotating Border */
+  .loader-outer {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 5px solid transparent;
+    border-top: 5px solid #d4452d;
+    border-right: 5px solid #d4452d;
+    animation: rotate 1.5s linear infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Circular Border */
+  .loader-circle {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f3f0eb, #e8e2d9, #f5f2ec);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    animation: pulse 1.5s infinite ease-in-out;
+  }
+
+  /* Logo in Center */
+  .loader-logo {
+    max-width: 80px;
+    height: auto;
+    margin-bottom: 5px;
+  }
+
+  /* MEERU CRETE Text */
+  .loader-text {
+    font-size: 16px;
+    font-weight: bold;
+    color: #222;
+    letter-spacing: 1px;
+    margin-bottom: 2px;
+  }
+
+  /* Loading... Text */
+  .loader-subtext {
+    font-size: 12px;
+    font-weight: 600;
+    color: #a13b2b;
+  }
+
+  /* Animation */
+  @keyframes pulse {
+
+    0%,
+    100% {
+      transform: scale(1);
+    }
+
+    50% {
+      transform: scale(1.05);
+    }
+  }
+
+  /* Back to Top */
+  #backToTop {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: none;
+    background: linear-gradient(to right, #bfa53a, #ffdf00, #b8860b);
+    color: rgb(59, 0, 0);
+    border: none;
+    border-radius: 50%;
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 1000;
+    transition: background 0.3s;
+  }
+
+  #backToTop:hover {
+    background-color: #444;
+  }
+
+  /* ✅ Responsive Adjustments */
+  @media (max-width: 768px) {
+    #backToTop {
+      bottom: 20px;
+      right: 20px;
+      font-size: 18px;
+      padding: 8px 16px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    #backToTop {
+      bottom: 15px;
+      right: 15px;
+      font-size: 16px;
+      padding: 6px 14px;
+    }
+  }
+
+  @media (max-width: 320px) {
+    #backToTop {
+      bottom: 10px;
+      right: 10px;
+      font-size: 14px;
+      padding: 5px 12px;
+    }
+  }
+</style>
+</head>
+
+<body>
+  <!-- Custom Preloader -->
+  <div id="loader">
+    <div class="loader-circle">
+      <img src="{% static 'image/logo.png' %}" alt="Meeru Logo" class="loader-logo">
+
+      <div class="loader-subtext">LOADING...</div>
+    </div>
+  </div>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" title="Back to Top">↑</button>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <!-- Logo Image -->
+        <img src="{% static 'image/logonav.png' %}" alt="Logo" />
+        <span>MERU <strong>CRETE</strong></span>
+      </div>
+
+      <!-- Hamburger Icon (Visible on mobile) -->
+      <button class="hamburger" onclick="toggleNavbar()">&#9776;</button>
+
+      <!-- Navigation Links -->
+      <nav class="nav-links">
+        <a href="/" class="{% if request.path == '/' %}active{% endif %}">Home</a>
+
+        <div class="dropdown">
+          <a href="#" class="{% if request.path|slice:':8' == '/product' %}active{% endif %}">Product ▾</a>
+
+          <div class="dropdown-content">
+            <a href="/products" class="{% if request.path == '/products' %}active{% endif %}">Collection</a>
+            <a href="/product-catalogue"
+              class="{% if request.path == '/product-catalogue' %}active{% endif %}">Catalogue</a>
+          </div>
+        </div>
+        <a href="/about" class="{% if request.path|slice:':6' == '/about' %}active{% endif %}">About Us</a>
+        <a href="/contact" class="{% if request.path|slice:':8' == '/contact' %}active{% endif %}">Contact Us</a>
+
+      </nav>
+
+    </div>
+  </header>
+
+
+
+
+  <!-- Section 1: About Us -->
+  <section class="about-section">
+    <div class="left-images animate-right">
+      <img src="https://i.pinimg.com/736x/e5/df/29/e5df293db3ed72c78589fea2eca74a88.jpg" class="main-img"
+        alt="Main Image">
+      <img src="https://i.pinimg.com/736x/7d/63/e8/7d63e8e4f3ec196d7f1ba90103e4f530.jpg" class="sub-img"
+        alt="Sub Image">
+    </div>
+    <div class="right-content animate-left">
+      <div class="section-label">About Us</div>
+      <div class="title">Choose Your Color What You Want For Your Home</div>
+      <div class="description">There are many variations of passages of Lorem Ipsum available, but the majority have
+        suffered alteration in some form.</div>
+      <ul class="list">
+        <li>High-quality ceramic and porcelain tiles</li>
+        <li>Experienced craftsmanship since 2001</li>
+        <li>Wide variety of patterns and finishes</li>
+      </ul>
+
+    </div>
+  </section>
+
+  <!-- Section: Our Mission -->
+  <section
+    style="background: linear-gradient(135deg, #f3f0eb, #e8e2d9, #f5f2ec); padding: 80px 20px; font-family: 'Montserrat', Arial, sans-serif;"
+    data-aos="fade-up" data-aos-duration="1500">
+    <div
+      style="max-width: 1300px; margin: auto; display: flex; align-items: center; gap: 60px; flex-wrap: wrap; animation: fadeIn 1s ease-in;">
+      <div style="flex: 1 1 300px; color: #000000;">
+        <h2 style="font-size: 36px; font-weight: 100; margin-bottom: 20px;">Our Mission</h2>
+        <p style="font-size: 16px; line-height: 1.6; margin-bottom: 30px;">
+          We aim to redefine the standards of elegance and durability in tile manufacturing...
+        </p>
+        <ul style="list-style: none; padding: 0; font-size: 16px;">
+          <li style="margin-bottom: 15px; padding-left: 25px; position: relative;">
+            <span style="position: absolute; left: 0; color: #f4a742;">✔</span> Sustainable and eco-friendly materials
+          </li>
+          <li style="margin-bottom: 15px; padding-left: 25px; position: relative;">
+            <span style="position: absolute; left: 0; color: #f4a742;">✔</span> Global distribution and reach
+          </li>
+          <li style="margin-bottom: 15px; padding-left: 25px; position: relative;">
+            <span style="position: absolute; left: 0; color: #f4a742;">✔</span> Craftsmanship meets innovation
+          </li>
+        </ul>
+      </div>
+      <div style="flex: 1 1 300px;">
+        <img src="https://i.pinimg.com/736x/e5/df/29/e5df293db3ed72c78589fea2eca74a88.jpg" alt="Factory"
+          style="width: 100%; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+      </div>
+    </div>
+  </section>
+
+  <style>
+    @media (max-width: 768px) {
+      section h2 {
+        font-size: 28px !important;
+      }
+
+      section p,
+      section ul {
+        font-size: 15px !important;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+
+
+
+  <!-- Section: Why Choose Us -->
+  <section style="padding: 80px 20px; font-family: 'Montserrat', Arial, sans-serif;" data-aos="fade-up"
+    data-aos-duration="1500">
+    <div style="max-width: 1300px; margin: auto; text-align: center; animation: fadeIn 1s ease-in;">
+      <h2 style="font-size: 36px; color: #1c1e21; font-weight: 100; margin-bottom: 20px;">Why Choose MeeruCrete?</h2>
+      <p style="color: #6c6c6c; font-size: 16px; margin-bottom: 60px;">
+        With over a decade of excellence, we offer unmatched quality and aesthetic appeal in the tile industry.
+      </p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px;">
+        <!-- Card 1 -->
+        <div
+          style="padding: 30px; border: 1px solid #ddd; border-radius: 8px; background: #fff; animation: fadeIn 1.5s ease-in;">
+          <img src="https://i.pinimg.com/736x/18/88/dd/1888dd34b5e0f4c49c2f5f77f513eecc.jpg"
+            style="width: 60px; margin-bottom: 20px;" alt="">
+          <h4 style="font-size: 20px; font-weight: 700; color: #1c1e21;">High Quality</h4>
+          <p style="color: #6c6c6c; font-size: 15px;">We use premium materials to ensure every tile is long-lasting and
+            perfect.</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div
+          style="padding: 30px; border: 1px solid #ddd; border-radius: 8px; background: #fff; animation: fadeIn 1.5s ease-in;">
+          <img src="https://cdn-icons-png.flaticon.com/512/190/190411.png" style="width: 60px; margin-bottom: 20px;"
+            alt="">
+          <h4 style="font-size: 20px; font-weight: 700; color: #1c1e21;">Innovative Design</h4>
+          <p style="color: #6c6c6c; font-size: 15px;">Modern, sleek, and stylish patterns for all your interior needs.
+          </p>
+        </div>
+
+        <!-- Card 3 -->
+        <div
+          style="padding: 30px; border: 1px solid #ddd; border-radius: 8px; background: #fff; animation: fadeIn 1.5s ease-in;">
+          <img src="https://cdn-icons-png.flaticon.com/512/1049/1049115.png" style="width: 60px; margin-bottom: 20px;"
+            alt="">
+          <h4 style="font-size: 20px; font-weight: 700; color: #1c1e21;">Custom Solutions</h4>
+          <p style="color: #6c6c6c; font-size: 15px;">We offer customizable tile designs to match unique project
+            requirements.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    @media (max-width: 768px) {
+      section h2 {
+        font-size: 28px !important;
+      }
+
+      section p {
+        font-size: 15px !important;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+  <!-- Section: Our Journey -->
+  <section
+    style="padding: 80px 20px; background: linear-gradient(135deg, #f3f0eb, #e8e2d9, #f5f2ec); font-family: 'Montserrat', Arial, sans-serif;"
+    data-aos="fade-up" data-aos-duration="1500">
+    <div style="max-width: 1200px; margin: auto; animation: fadeIn 1s ease-in;">
+      <h2 style="text-align: center; font-size: 36px; font-weight: 100; color: #1c1e21; margin-bottom: 20px;">Our
+        Journey</h2>
+      <p style="text-align: center; color: #6c6c6c; font-size: 16px; margin-bottom: 60px;">
+        From humble beginnings to a leading tile manufacturer, here's how we grew over the years.
+      </p>
+
+      <div style="border-left: 3px solid #f4a742; padding-left: 30px;">
+        <div style="margin-bottom: 40px; animation: fadeIn 1s ease-in;">
+          <h4 style="margin: 0; font-size: 20px; color: #1c1e21;">2012 - Founded</h4>
+          <p style="color: #6c6c6c; font-size: 15px;">Started in Ambur with a small production unit and a big vision.
+          </p>
+        </div>
+        <div style="margin-bottom: 40px; animation: fadeIn 1.2s ease-in;">
+          <h4 style="margin: 0; font-size: 20px; color: #1c1e21;">2016 - Expansion</h4>
+          <p style="color: #6c6c6c; font-size: 15px;">Increased production and launched modern tile designs.</p>
+        </div>
+        <div style="margin-bottom: 40px; animation: fadeIn 1.4s ease-in;">
+          <h4 style="margin: 0; font-size: 20px; color: #1c1e21;">2020 - Global Reach</h4>
+          <p style="color: #6c6c6c; font-size: 15px;">Began exporting tiles across countries, growing our global
+            presence.</p>
+        </div>
+        <div style="animation: fadeIn 1.6s ease-in;">
+          <h4 style="margin: 0; font-size: 20px; color: #1c1e21;">2024 - Innovation & Tech</h4>
+          <p style="color: #6c6c6c; font-size: 15px;">Implemented automation and AI for design and quality control.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    @media (max-width: 768px) {
+      section h2 {
+        font-size: 28px !important;
+      }
+
+      section p {
+        font-size: 15px !important;
+      }
+
+      section h4 {
+        font-size: 18px !important;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+  <!-- Section: How We Make It -->
+  <section
+    style="background: linear-gradient(135deg, #f3f0eb, #e8e2d9, #f5f2ec); padding: 80px 20px; font-family: 'Montserrat', Arial, sans-serif;"
+    data-aos="fade-up" data-aos-duration="1500">
+    <div style="max-width: 1300px; margin: auto; animation: fadeIn 1s ease-in;">
+      <h2 style="text-align: center; font-size: 36px; font-weight: 100; color: #1c1e21; margin-bottom: 20px;">How We
+        Make It</h2>
+      <p style="text-align: center; color: #6c6c6c; font-size: 16px; margin-bottom: 60px;">Step-by-step look into our
+        tile manufacturing process.</p>
+
+      <div style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: center;">
+        <!-- Step 1 -->
+        <div
+          style="flex: 1; min-width: 260px; max-width: 300px; background: #fff; border-radius: 8px; padding: 30px; box-shadow: 0 0 15px rgba(0,0,0,0.05); text-align: center; animation: fadeIn 1s ease-in;">
+          <img src="https://cdn-icons-png.flaticon.com/512/857/857681.png" style="width: 60px; margin-bottom: 20px;">
+          <h4 style="font-size: 18px; font-weight: 700; color: #1c1e21;">Raw Materials</h4>
+          <p style="color: #6c6c6c; font-size: 15px;">Sourcing the highest quality clay and minerals for a solid base.
+          </p>
+        </div>
+        <!-- Step 2 -->
+        <div
+          style="flex: 1; min-width: 260px; max-width: 300px; background: #fff; border-radius: 8px; padding: 30px; box-shadow: 0 0 15px rgba(0,0,0,0.05); text-align: center; animation: fadeIn 1.2s ease-in;">
+          <img src="https://cdn-icons-png.flaticon.com/512/858/858170.png" style="width: 60px; margin-bottom: 20px;">
+          <h4 style="font-size: 18px; font-weight: 700; color: #1c1e21;">Design & Molding</h4>
+          <p style="color: #6c6c6c; font-size: 15px;">Tiles are shaped and designed using precise molds and machinery.
+          </p>
+        </div>
+        <!-- Step 3 -->
+        <div
+          style="flex: 1; min-width: 260px; max-width: 300px; background: #fff; border-radius: 8px; padding: 30px; box-shadow: 0 0 15px rgba(0,0,0,0.05); text-align: center; animation: fadeIn 1.4s ease-in;">
+          <img src="https://cdn-icons-png.flaticon.com/512/737/737970.png" style="width: 60px; margin-bottom: 20px;">
+          <h4 style="font-size: 18px; font-weight: 700; color: #1c1e21;">Firing & Finishing</h4>
+          <p style="color: #6c6c6c; font-size: 15px;">Baked at high temperatures and glazed for a polished finish.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    @media (max-width: 768px) {
+      section h2 {
+        font-size: 28px !important;
+      }
+
+      section p {
+        font-size: 15px !important;
+      }
+
+      section h4 {
+        font-size: 16px !important;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+  <section>
+    <!-- Retirement Footer Section -->
+    <div class="retirement-footer text-center py-5" data-aos="fade-up" data-aos-duration="1500">
+
+      <!-- Footer Logo -->
+      <img src="{% static 'image/footerlogo.png' %}" alt="MeeruCrete Logo" class="footer-logo mb-3">
+
+      <!-- Brand Name with Shine Effect -->
+      <h5 class="retirement-shine-text mb-2" id="mu">MERU CRETE</h5>
+      <p>where strength meets precision</p>
+
+      <!-- Social Icons -->
+      <div class="social-icons">
+        <a href="#" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="#" aria-label="Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+        <a href="#" aria-label="Twitter">
+          <i class="fab fa-x-twitter"></i>
+        </a>
+      </div>
+      <!-- copy rights -->
+      <div class="footer-text" id="text">
+        <p>© 2025 MeeruCrete | All Rights Reserved</p>
+
+      </div>
+
+    </div>
+  </section>
+
+
+
+
+
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/js/lightgallery.min.js"></script>
+
+  <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+
+
+
+  <script>
+    function toggleNavbar() {
+      document.querySelector('.navbar').classList.toggle('active');
+    }
+  </script>
+
+  <script>
+    // Hide loader after page loads
+    window.addEventListener('load', () => {
+      const loader = document.getElementById('loader');
+      if (loader) {
+        loader.style.opacity = '0';
+        setTimeout(() => loader.style.display = 'none', 500);
+      }
+    });
+
+    // Back to Top functionality
+    const backToTopBtn = document.getElementById("backToTop");
+    if (backToTopBtn) {
+      window.onscroll = () => {
+        backToTopBtn.style.display =
+          (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) ? "block" : "none";
+      };
+
+      backToTopBtn.onclick = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      };
+    }
+  </script>
+
+  <!-- AOS JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+  </script>
+
+</body>
+
+</html>

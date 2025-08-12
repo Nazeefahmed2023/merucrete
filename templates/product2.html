@@ -1,0 +1,1438 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MeeruCrete Products</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="{% static 'image/logonav.png' %}">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Roboto&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Add this in the <head> of your HTML -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
+  <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, #f3f0eb, #e8e2d9, #f5f2ec);
+      color: #ffffff;
+      font-family: 'Montserrat', Arial, sans-serif;
+      margin: 0;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
+
+    }
+
+    /* ------------------------------ */
+    /* SCROLLBAR STYLES */
+    /* ------------------------------ */
+    html::-webkit-scrollbar {
+      width: 1rem;
+    }
+
+    html::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    html::-webkit-scrollbar-thumb {
+      background: var(--yellow);
+    }
+
+
+    /* ------------------------------ */
+    /* NAVBAR STYLES */
+    /* ------------------------------ */
+
+    .navbar {
+      background: linear-gradient(to right, #3d0017, #800033, #4f0022);
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      color: white;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0px;
+      /* Fixed gap value */
+      font-size: 31px;
+      color: #ffffff;
+    }
+
+    strong {
+      font-weight: 600;
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    h1,
+    h2 {
+      font-size: 40px;
+      margin-top: 40px;
+    }
+
+    .logo img {
+      height: 90px;
+    }
+
+
+    .nav-links a {
+      margin-left: 30px;
+      text-decoration: none;
+      color: #ffffff;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: rgb(245, 222, 179);
+      font-weight: bold;
+    }
+
+    .nav-links a.active {
+      color: rgb(245, 222, 179);
+      font-weight: bold;
+      border-bottom: 2px solid rgb(245, 222, 179);
+      /* Optional visual */
+    }
+
+
+    /* ------------------------------ */
+    /* Mobile-specific Navbar Styles */
+    /* ------------------------------ */
+
+    /* Between 900px and 250px */
+    @media (max-width: 900px) {
+
+      /* Hide nav-links initially */
+      .nav-links {
+        display: none;
+        /* Hide links on smaller screens */
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        position: absolute;
+        /* Fix the nav to the top */
+        top: 60px;
+        /* Adjust the space from the navbar */
+        left: 0;
+        background-color: #3d0017;
+        /* Set a background color */
+        padding: 20px 0;
+      }
+
+      .nav-links a {
+        margin: 10px 0;
+      }
+
+      /* Show hamburger menu (only on mobile) */
+      .hamburger {
+        display: block;
+        background-color: transparent;
+        border: none;
+        color: #ffffff;
+        font-size: 30px;
+        cursor: pointer;
+      }
+
+      /* When navbar is active, show nav-links */
+      .navbar.active .nav-links {
+        display: flex;
+      }
+    }
+
+    /* Remove nav-links after 900px */
+    @media (min-width: 901px) {
+      .nav-links {
+        display: none !important;
+        /* Hide nav-links on screens greater than 900px */
+      }
+
+      /* Show hamburger button only on smaller screens */
+      .hamburger {
+        display: none !important;
+      }
+    }
+
+    /* Desktop Styles (Larger than 900px) */
+    @media (min-width: 901px) {
+      .nav-links {
+        display: flex !important;
+        /* Always show nav-links on larger screens */
+        flex-direction: row;
+        /* Make nav links appear in a row */
+        justify-content: flex-end;
+        /* Align links to the right */
+      }
+
+      .nav-links a {
+        margin-left: 30px;
+      }
+    }
+
+    /* For screens between 201px and 300px */
+    @media (max-width: 400px) and (min-width: 301px) {
+      .nav-links {
+        flex-direction: column;
+        font-size: 10px;
+      }
+
+      .logo {
+        display: flex;
+
+        align-items: center;
+        gap: 0px;
+        font-size: 18px;
+        color: #ffffff;
+      }
+
+      .nav-links a {
+        margin: 8px 0;
+        font-size: 14px;
+      }
+
+      .logo img {
+        height: 27px;
+      }
+
+      .logo span {
+        font-size: 1.2rem;
+      }
+
+      .hamburger {
+        font-size: 25px;
+      }
+    }
+
+    /* For screens between 201px and 300px */
+    @media (max-width: 300px) and (min-width: 250px) {
+      .nav-links {
+        flex-direction: column;
+        font-size: 10px;
+      }
+
+      .logo {
+        display: flex;
+
+        align-items: center;
+        gap: 0px;
+        font-size: 18px;
+        color: #ffffff;
+      }
+
+      .nav-links a {
+        margin: 8px 0;
+        font-size: 14px;
+      }
+
+      .logo img {
+        height: 27px;
+      }
+
+      .logo span {
+        font-size: 1.2rem;
+      }
+
+      .hamburger {
+        font-size: 25px;
+      }
+    }
+
+    @media (max-width: 250px) and (min-width: 201px) {
+
+      .logo {
+        display: flex;
+
+        align-items: center;
+        gap: 0px;
+        font-size: 18px;
+        color: #ffffff;
+      }
+
+      .logo img {
+        height: 21px;
+      }
+
+      .logo span {
+        font-size: 1rem;
+      }
+
+      .hamburger {
+        font-size: 25px;
+      }
+    }
+
+    /* For screens between 101px and 200px */
+    @media (max-width: 201px) and (min-width: 101px) {
+      .nav-links {
+        flex-direction: column;
+        font-size: 8px;
+      }
+
+      .nav-links a {
+        margin: 6px 0;
+        font-size: 12px;
+      }
+
+      .logo img {
+        height: 26px;
+      }
+
+      .logo span {
+        font-size: 8px;
+      }
+
+      .hamburger {
+        font-size: 22px;
+      }
+    }
+
+    /* For screens 100px and below */
+    @media (max-width: 100px) {
+      .nav-links {
+        flex-direction: column;
+        font-size: 10px;
+      }
+
+      .nav-links a {
+        margin: 4px 0;
+        font-size: 10px;
+      }
+
+      .logo img {
+        max-height: 25px;
+      }
+
+      .logo span {
+        font-size: 0.9rem;
+      }
+
+      .hamburger {
+        font-size: 24px;
+      }
+    }
+
+
+
+    .container {
+      max-width: 1300px;
+      margin: auto;
+      padding: 20px;
+      /* margin-top: rem; <-- looks like a typo, removed */
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .section-heading h1 {
+      font-size: 42px;
+      color: #881b35;
+      margin-bottom: 10px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .section-heading p {
+      font-size: 16px;
+      color: #333;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .image-wrapper {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      margin-top: 60px;
+    }
+
+    .main-image {
+      width: 100%;
+      height: 80vh;
+      object-fit: cover;
+      border: 2px solid #000000;
+      transition: transform 0.5s ease;
+    }
+
+    .image-wrapper:hover .main-image {
+      transform: scale(1.03);
+    }
+
+    .card-container {
+      position: absolute;
+      bottom: 3rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 30px;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      pointer-events: none;
+    }
+
+    .popup-card {
+      width: 250px;
+      background-color: #ffffff;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+      transform: translateY(40px);
+      transition: all 0.5s ease;
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .popup-card:hover {
+      transform: translateY(0) scale(1.05);
+    }
+
+    .popup-card img {
+      width: 100%;
+      height: 200px;
+      /* reduced from 300px */
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .popup-card:hover img {
+      transform: scale(1.1);
+    }
+
+    .card-info {
+      padding: 12px;
+      /* reduced from 20px */
+      text-align: center;
+      font-size: 16px;
+      /* reduced from 14px */
+      color: #ffffff;
+      background: linear-gradient(to right, #3d0017, #800033, #4f0022);
+      width: 100%;
+    }
+
+    .image-wrapper:hover .card-container {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .background-pattern {
+      position: relative;
+      background:
+        repeating-linear-gradient(45deg, #eee 0, #eee 20px, #fff 20px, #fff 40px),
+        white;
+      padding: 50px 20px 100px;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    .maroon-bar {
+      height: 10px;
+      background-color: #881b35;
+      width: 100%;
+      margin-top: -30px;
+      margin-bottom: 30px;
+    }
+
+    .text-box {
+      text-align: right;
+      padding-right: 20px;
+    }
+
+    .text-box h1 {
+      font-size: 36px;
+      color: #4d0701;
+      letter-spacing: 1px;
+      text-shadow: 1px 1px 2px #ccc;
+    }
+
+    .text-box .viana {
+      font-family: 'Playfair Display', serif;
+      font-weight: bold;
+    }
+
+    .text-box .series {
+      font-family: 'Playfair Display', serif;
+      font-weight: normal;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ===== Responsive Styles ===== */
+    @media (max-width: 768px) {
+      .main-image {
+        height: 40vh;
+      }
+
+      .card-container {
+        position: static;
+        /* changed from absolute for better flow */
+        opacity: 1;
+        /* keep visible */
+        pointer-events: auto;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        gap: 15px;
+        padding: 0 10px;
+        justify-content: flex-start;
+        transform: none;
+        width: 100%;
+        bottom: auto;
+        left: auto;
+      }
+
+      .section-heading h1 {
+        font-size: clamp(24px, 5vw, 42px);
+        color: #881b35;
+        margin-bottom: 10px;
+        font-family: 'Playfair Display', serif;
+        line-height: 1.2;
+      }
+
+      .custom-heading h2 {
+        font-size: clamp(28px, 6vw, 48px);
+        font-family: 'Playfair Display', serif;
+        color: #881b35;
+        position: relative;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        line-height: 1.1;
+      }
+
+      .card-container::-webkit-scrollbar {
+        display: none;
+      }
+
+      .card-container {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+
+      .popup-card {
+        flex: 0 0 auto;
+        width: 180px;
+      }
+
+      .popup-card img {
+        height: 120px;
+      }
+
+      .card-info {
+        padding: 8px;
+        font-size: 12px;
+      }
+
+      .section-heading h1 {
+        font-size: 28px;
+      }
+
+      .section-heading p {
+        font-size: 14px;
+        max-width: 100%;
+        padding: 0 10px;
+      }
+
+      .text-box h1 {
+        font-size: 28px;
+        text-align: center;
+        padding-right: 0;
+      }
+
+      .text-box {
+        text-align: center;
+        padding: 0;
+      }
+
+      .custom-heading h2 {
+        font-size: 32px;
+      }
+
+      .custom-heading p {
+        font-size: 14px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      /* your existing styles */
+
+      /* Disable popup card hover animations on mobile */
+      .popup-card {
+        transform: none !important;
+        transition: none !important;
+        box-shadow: none !important;
+      }
+
+      .popup-card:hover {
+        transform: none !important;
+        box-shadow: none !important;
+      }
+
+      .popup-card img {
+        transition: none !important;
+      }
+
+      .popup-card:hover img {
+        transform: none !important;
+      }
+    }
+
+    .custom-heading {
+      text-align: center;
+      margin: 60px auto 40px;
+      padding: 20px;
+      max-width: 1000px;
+      position: relative;
+    }
+
+    .custom-heading h2 {
+      font-size: 48px;
+      font-family: 'Playfair Display', serif;
+      color: #881b35;
+      position: relative;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .custom-heading h2::after {
+      content: '';
+      display: block;
+      width: 100px;
+      height: 4px;
+      background: #ffd900;
+      margin: 10px auto 0;
+      border-radius: 10px;
+    }
+
+    .custom-heading p {
+      font-size: 16px;
+      color: #444;
+      line-height: 1.6;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    /* Section main heading */
+    .custom-heading h2 {
+      font-size: clamp(28px, 6vw, 48px);
+      font-family: 'Playfair Display', serif;
+      color: #881b35;
+      position: relative;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      line-height: 1.1;
+      text-align: center;
+    }
+
+    /* Paragraph under main heading */
+    .custom-heading p {
+      font-size: clamp(14px, 3vw, 16px);
+      color: #444;
+      line-height: 1.6;
+      font-family: 'Roboto', sans-serif;
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    /* Series title inside .text-box */
+    .text-box h1 {
+      font-size: clamp(24px, 5vw, 36px);
+      color: #4d0701;
+      letter-spacing: 1px;
+      text-shadow: 1px 1px 2px #ccc;
+      text-align: center;
+      margin: 0;
+      font-family: 'Playfair Display', serif;
+      font-weight: normal;
+      line-height: 1.2;
+    }
+
+    /* Optional: Responsive adjustments for smaller screens */
+    @media (max-width: 480px) {
+      .custom-heading h2 {
+        letter-spacing: 1px;
+        font-size: clamp(20px, 7vw, 28px);
+      }
+
+      .custom-heading p {
+        font-size: 14px;
+        padding: 0 10px;
+      }
+
+      .text-box h1 {
+        font-size: clamp(18px, 6vw, 24px);
+        letter-spacing: 0.5px;
+        padding: 0 10px;
+      }
+    }
+
+
+
+    /* ================================
+   UNIVERSAL FOOTER SECTION
+================================ */
+
+    /* Background */
+    .retirement-footer {
+      background-image: url("/static/image/footer.png");
+      background-size: cover;
+      background-position: center;
+      height: auto;
+      padding: 3rem 1rem;
+      color: white;
+      text-align: center;
+    }
+
+    /* Footer Logo/Image */
+    .retirement-footer .footer-logo,
+    img.mb-3 {
+      width: 20%;
+      height: auto;
+      margin-bottom: 1rem;
+    }
+
+    /* Footer Main Heading */
+    #mu {
+      font-size: 3rem;
+      color: #b88d02;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Shining Gradient Text Animation */
+    .retirement-shine-text {
+      font-weight: bold;
+      font-size: 1.5rem;
+      background: linear-gradient(90deg,
+          #ffffff 0%,
+          #ffcc70 20%,
+          #ffffff 40%,
+          #ffcc70 60%,
+          #ffffff 80%);
+      background-size: 200% auto;
+      color: #b88d02;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: retirement-shine 6s linear infinite;
+      margin-bottom: 0.3rem;
+    }
+
+    /* Animation Keyframes */
+    @keyframes retirement-shine {
+      to {
+        background-position: 200% center;
+      }
+    }
+
+    /* Tagline */
+    .retirement-footer p {
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #f0f0f0;
+    }
+
+    /* Social Icons Container */
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Social Icon Links */
+    .social-icons a {
+      margin: 0 15px;
+      font-size: 1.8rem;
+      color: white;
+      transition: transform 0.3s, color 0.3s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+    }
+
+    /* Hover Effects */
+    .social-icons a:hover {
+      transform: scale(1.2);
+      color: #ffcc70;
+    }
+
+    /* Copyright */
+    .retirement-footer p.text-white {
+      margin-bottom: 0.3rem;
+      font-size: 0.9rem;
+      font-weight: 400;
+    }
+
+    /* ================================
+   RESPONSIVE FOOTER STYLES
+================================ */
+
+    @media (max-width: 768px) {
+
+      .retirement-footer .footer-logo,
+      img.mb-3 {
+        width: 40%;
+      }
+
+      #mu {
+        font-size: 2.2rem;
+      }
+
+      .retirement-shine-text {
+        font-size: 1.2rem;
+      }
+
+      .social-icons a {
+        font-size: 1.5rem;
+        margin: 0 12px;
+      }
+
+      .retirement-footer p {
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+
+      .retirement-footer .footer-logo,
+      img.mb-3 {
+        width: 60%;
+      }
+
+      #mu {
+        font-size: 1.8rem;
+      }
+
+      .retirement-shine-text {
+        font-size: 1rem;
+      }
+
+      .social-icons a {
+        font-size: 1.3rem;
+        margin: 0 10px;
+      }
+
+      .retirement-footer p {
+        font-size: 0.85rem;
+      }
+    }
+
+    @media (max-width: 320px) {
+
+      .retirement-footer .footer-logo,
+      img.mb-3 {
+        width: 80%;
+      }
+
+      #mu {
+        font-size: 1.5rem;
+      }
+
+      .retirement-shine-text {
+        font-size: 0.9rem;
+      }
+
+      .social-icons a {
+        font-size: 1.1rem;
+        margin: 0 8px;
+      }
+
+      .retirement-footer p {
+        font-size: 0.8rem;
+      }
+    }
+
+    .footer-text {
+      margin: 0;
+      padding: 0;
+      line-height: 1.2;
+    }
+
+    .footer-text p {
+      margin: 0;
+      padding: 0;
+      font-size: 1rem;
+      color: white;
+    }
+
+    /* Slightly lighter color for the developer name */
+    .footer-text p:last-child {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
+      margin-top: 0.2rem;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 576px) {
+      .footer-text p {
+        font-size: 0.8rem;
+      }
+
+      .footer-text p:last-child {
+        font-size: 0.67rem;
+      }
+    }
+
+
+
+
+    .enquiry-btn {
+
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 25px;
+      background-color: #800000;
+      /* Maroon */
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+
+    .enquiry-btn:hover {
+      background-color: #a52a2a;
+    }
+
+    /* Product Dropdown */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #4f0022;
+      min-width: 160px;
+      z-index: 1;
+      border-radius: 4px;
+      top: 100%;
+      left: 0;
+    }
+
+    .dropdown-content a {
+      color: white;
+      padding: 10px 16px;
+      text-decoration: none;
+      display: block;
+      font-weight: 400;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #800033;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    /* Preloader Base */
+    #loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #f3f0eb, #e8e2d9, #f5f2ec);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease;
+    }
+
+    /* Rotating Border */
+    .loader-outer {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 5px solid transparent;
+      border-top: 5px solid #d4452d;
+      border-right: 5px solid #d4452d;
+      animation: rotate 1.5s linear infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Circular Border */
+    .loader-circle {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #f3f0eb, #e8e2d9, #f5f2ec);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 10px;
+      animation: pulse 1.5s infinite ease-in-out;
+    }
+
+    /* Logo in Center */
+    .loader-logo {
+      max-width: 80px;
+      height: auto;
+      margin-bottom: 5px;
+    }
+
+    /* MEERU CRETE Text */
+    .loader-text {
+      font-size: 16px;
+      font-weight: bold;
+      color: #222;
+      letter-spacing: 1px;
+      margin-bottom: 2px;
+    }
+
+    /* Loading... Text */
+    .loader-subtext {
+      font-size: 12px;
+      font-weight: 600;
+      color: #a13b2b;
+    }
+
+    /* Animation */
+    @keyframes pulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.05);
+      }
+    }
+
+    /* Back to Top */
+    #backToTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      display: none;
+      background: linear-gradient(to right, #bfa53a, #ffdf00, #b8860b);
+      color: rgb(59, 0, 0);
+      border: none;
+      border-radius: 50%;
+      padding: 10px 20px;
+      font-size: 20px;
+      cursor: pointer;
+      z-index: 1000;
+      transition: background 0.3s;
+    }
+
+    #backToTop:hover {
+      background-color: #444;
+    }
+
+    /* ✅ Responsive Adjustments */
+    @media (max-width: 768px) {
+      #backToTop {
+        bottom: 20px;
+        right: 20px;
+        font-size: 18px;
+        padding: 8px 16px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      #backToTop {
+        bottom: 15px;
+        right: 15px;
+        font-size: 16px;
+        padding: 6px 14px;
+      }
+    }
+
+    @media (max-width: 320px) {
+      #backToTop {
+        bottom: 10px;
+        right: 10px;
+        font-size: 14px;
+        padding: 5px 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Custom Preloader -->
+  <div id="loader">
+    <div class="loader-circle">
+      <img src="{% static 'image/logo.png' %}" alt="Meeru Logo" class="loader-logo">
+
+      <div class="loader-subtext">LOADING...</div>
+    </div>
+  </div>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" title="Back to Top">↑</button>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <!-- Logo Image -->
+        <img src="{% static 'image/logonav.png' %}" alt="Logo" />
+        <span>MERU <strong>CRETE</strong></span>
+      </div>
+
+      <!-- Hamburger Icon (Visible on mobile) -->
+      <button class="hamburger" onclick="toggleNavbar()">&#9776;</button>
+
+      <!-- Navigation Links -->
+      <nav class="nav-links">
+        <a href="/" class="{% if request.path == '/' %}active{% endif %}" id="home">Home</a>
+
+        <div class="dropdown">
+          <a href="#" class="{% if request.path|slice:':8' == '/product' %}active{% endif %}">Product ▾</a>
+
+          <div class="dropdown-content">
+            <a href="/products" class="{% if request.path == '/products' %}active{% endif %}">Collection</a>
+            <a href="/product-catalogue"
+              class="{% if request.path == '/product-catalogue' %}active{% endif %}">Catalogue</a>
+          </div>
+        </div>
+        <a href="/about" class="{% if request.path|slice:':6' == '/about' %}active{% endif %}">About Us</a>
+        <a href="/contact" class="{% if request.path|slice:':8' == '/contact' %}active{% endif %}">Contact Us</a>
+
+      </nav>
+    </div>
+  </header>
+
+  <section class="custom-heading">
+    <h2>Our MeeruCrete Product</h2>
+    <p>Explore the artistry of our cultured stone collections – elegance, durability, and style in every series.
+      Discover the perfect surface for your dream project.</p>
+  </section>
+  <div class="container">
+
+
+    {% for s in series %}
+    <div class="image-wrapper" data-aos="fade-up" data-aos-duration="1500">
+      {% if s.main_image %}
+      <img src="{{ s.main_image.url }}" alt="{{ s.title }}" class="main-image" />
+      {% endif %}
+
+      <div class="card-container">
+        {% for card in s.cards.all %}
+        <div class="popup-card">
+          <img src="{{ card.image.url }}" alt="{{ card.color }} - {{ card.size }}" />
+          <div class="card-info">
+            <p><strong>Color:</strong> {{ card.color }}</p>
+            <p><strong>Size:</strong> {{ card.size }}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="background-pattern">
+      <div class="maroon-bar"></div>
+      <div class="text-box">
+        <h1><span class="viana">{{ s.title }}</span> <span class="series">SERIES</span></h1>
+        <a href="#" class="enquiry-btn" data-product="{{ s.title }}">Enquiry</a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+
+
+
+  <section>
+    <!-- Retirement Footer Section -->
+    <div class="retirement-footer text-center py-5" data-aos="fade-up" data-aos-duration="1500">
+
+      <!-- Footer Logo -->
+      <img src="{% static 'image/footerlogo.png' %}" alt="MeeruCrete Logo" class="footer-logo mb-3">
+
+      <!-- Brand Name with Shine Effect -->
+      <h5 class="retirement-shine-text mb-2" id="mu">MERU CRETE</h5>
+      <p>where strength meets precision</p>
+
+      <!-- Social Icons -->
+      <div class="social-icons">
+        <a href="#" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="#" aria-label="Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+        <a href="#" aria-label="Twitter">
+          <i class="fab fa-x-twitter"></i>
+        </a>
+      </div>
+
+      <!-- copy rights -->
+      <div class="footer-text">
+        <p>© 2025 MeeruCrete | All Rights Reserved</p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Popup enquiry form -->
+  <div class="popup-overlay" id="popupOverlay"
+    style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.5); justify-content:center; align-items:center; z-index:1000;">
+    <div class="popup-form"
+      style="background:#fff; padding:20px 30px; border-radius:8px; max-width:400px; width:100%; box-shadow:0 2px 10px rgba(0,0,0,0.3); position:relative;">
+      <span class="close-btn" id="closeBtn"
+        style="position:absolute; top:10px; right:15px; font-size:22px; font-weight:bold; color:#999; cursor:pointer;">&times;</span>
+      <h2 style="margin-top:0; margin-bottom:15px; font-size:22px;">Product Enquiry</h2>
+      <form id="enquiryForm" method="POST" action="{% url 'save_enquiry' %}">
+        {% csrf_token %}
+        <!-- Product Name Title -->
+        <label for="productName" style="display:block; margin-top:12px; font-weight:bold; color: #000000;">Product
+          Name</label>
+        <input type="text" id="productName" name="productName" readonly
+          style="width:100%; padding:7px; margin-top:5px; border:1px solid #ccc; border-radius:4px; box-sizing:border-box;" />
+
+        <!-- Address Title -->
+        <label for="address" style="display:block; margin-top:12px; font-weight:bold;color: #000000;">Address</label>
+        <input type="text" id="address" name="address" placeholder="Enter your address" required
+          style="width:100%; padding:7px; margin-top:5px; border:1px solid #ccc; border-radius:4px; box-sizing:border-box;" />
+
+        <!-- State Title -->
+        <label for="state" style="display:block; margin-top:12px; font-weight:bold;color: #000000;" ;>State</label>
+        <select id="state" name="state" required
+          style="width:100%; padding:7px; margin-top:5px; border:1px solid #ccc; border-radius:4px; box-sizing:border-box;">
+          <option value="" disabled selected>Select your state</option>
+          <option value="Andhra Pradesh">Andhra Pradesh</option>
+          <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+          <option value="Assam">Assam</option>
+          <option value="Bihar">Bihar</option>
+          <option value="Chhattisgarh">Chhattisgarh</option>
+          <option value="Goa">Goa</option>
+          <option value="Gujarat">Gujarat</option>
+          <option value="Haryana">Haryana</option>
+          <option value="Himachal Pradesh">Himachal Pradesh</option>
+          <option value="Jharkhand">Jharkhand</option>
+          <option value="Karnataka">Karnataka</option>
+          <option value="Kerala">Kerala</option>
+          <option value="Madhya Pradesh">Madhya Pradesh</option>
+          <option value="Maharashtra">Maharashtra</option>
+          <option value="Manipur">Manipur</option>
+          <option value="Meghalaya">Meghalaya</option>
+          <option value="Mizoram">Mizoram</option>
+          <option value="Nagaland">Nagaland</option>
+          <option value="Odisha">Odisha</option>
+          <option value="Punjab">Punjab</option>
+          <option value="Rajasthan">Rajasthan</option>
+          <option value="Sikkim">Sikkim</option>
+          <option value="Tamil Nadu">Tamil Nadu</option>
+          <option value="Telangana">Telangana</option>
+          <option value="Tripura">Tripura</option>
+          <option value="Uttar Pradesh">Uttar Pradesh</option>
+          <option value="Uttarakhand">Uttarakhand</option>
+          <option value="West Bengal">West Bengal</option>
+          <option value="Delhi">Delhi</option>
+          <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+          <option value="Ladakh">Ladakh</option>
+          <option value="Puducherry">Puducherry</option>
+        </select>
+
+        <!-- Mobile Number Title -->
+        <label for="mobile" style="display:block; margin-top:12px; font-weight:bold;color: #000000;">Mobile
+          Number</label>
+        <div style="display:flex; gap:5px;">
+          <input type="text" value="+91" readonly
+            style="width:50px; text-align:center; background:#eee; border:1px solid #ccc; border-radius:4px;" />
+          <input type="tel" id="mobile" name="mobile" placeholder="Enter mobile number" pattern="[6-9][0-9]{9}" required
+            style="flex:1; padding:7px; border:1px solid #ccc; border-radius:4px; box-sizing:border-box;" />
+        </div>
+
+        <!-- Message Title -->
+        <label for="message" style="display:block; margin-top:12px; font-weight:bold;color: #000000;">Your Question /
+          Message</label>
+        <textarea id="message" name="message" placeholder="Type your question or message here..." required
+          style="width:100%; padding:7px; margin-top:5px; border:1px solid #ccc; border-radius:4px; box-sizing:border-box; min-height:70px; resize:vertical;"></textarea>
+
+        <button type="submit"
+          style="margin-top:15px; width:100%; background-color:#28a745; color:#fff; padding:10px; font-size:16px; border:none; border-radius:5px; cursor:pointer;">Submit
+          Enquiry</button>
+      </form>
+    </div>
+  </div>
+
+  {% if messages %}
+  {% for message in messages %}
+  <div id="success-alert" style="
+            padding: 15px;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            font-size: 16px;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            display: none;
+        ">
+    {{ message }}
+    <span onclick="this.parentElement.style.display='none';" style="
+              position: absolute;
+              right: 15px;
+              top: 50%;
+              transform: translateY(-50%);
+              cursor: pointer;
+              font-size: 20px;
+              font-weight: bold;
+          ">&times;</span>
+  </div>
+  {% endfor %}
+  {% endif %}
+
+  <script>
+    // Display the success alert
+    window.onload = function () {
+      const alertBox = document.getElementById('success-alert');
+      if (alertBox) {
+        alertBox.style.display = 'block';  // Show the alert box
+        setTimeout(() => {
+          alertBox.style.display = 'none'; // Hide the alert after 5 seconds
+        }, 5000);  // 5 seconds
+      }
+    };
+  </script>
+
+
+  <!-- PLACE SCRIPT HERE, at the end of body -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const enquiryButtons = document.querySelectorAll('.enquiry-btn');
+      const popupOverlay = document.getElementById('popupOverlay');
+      const productNameInput = document.getElementById('productName');
+      const closeBtn = document.getElementById('closeBtn');
+      const enquiryForm = document.getElementById('enquiryForm');
+
+      enquiryButtons.forEach(button => {
+        button.addEventListener('click', e => {
+          e.preventDefault();
+          const textBox = button.closest('.text-box');
+          if (textBox) {
+            const productName = textBox.querySelector('h1').innerText.trim();
+            productNameInput.value = productName;
+          } else {
+            productNameInput.value = "Unknown Product";
+          }
+          popupOverlay.style.display = 'flex';
+        });
+      });
+
+      closeBtn.addEventListener('click', () => {
+        popupOverlay.style.display = 'none';
+        enquiryForm.reset();
+      });
+
+      popupOverlay.addEventListener('click', e => {
+        if (e.target === popupOverlay) {
+          popupOverlay.style.display = 'none';
+          enquiryForm.reset();
+        }
+      });
+    });
+  </script>
+
+
+
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/js/lightgallery.min.js"></script>
+
+  <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+
+  <!-- Custom JS File Link  -->
+  <script src="js/script.js"></script>
+
+  <script>
+    function toggleNavbar() {
+      document.querySelector('.navbar').classList.toggle('active');
+    }
+  </script>
+  <script>
+    // Hide loader after page loads
+    window.addEventListener('load', () => {
+      const loader = document.getElementById('loader');
+      if (loader) {
+        loader.style.opacity = '0';
+        setTimeout(() => loader.style.display = 'none', 500);
+      }
+    });
+
+    // Back to Top functionality
+    const backToTopBtn = document.getElementById("backToTop");
+    if (backToTopBtn) {
+      window.onscroll = () => {
+        backToTopBtn.style.display =
+          (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) ? "block" : "none";
+      };
+
+      backToTopBtn.onclick = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      };
+    }
+  </script>
+
+
+  <!-- AOS JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+  </script>
+</body>
+
+</html>

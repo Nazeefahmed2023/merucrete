@@ -1,0 +1,3310 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Meru Crete</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="{% static 'image/logonav.png' %}">
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+
+  <!-- Font Awesome 6.5.0 CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Remixicon (if you need it) -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="{% static 'image/css/style.css' %}">
+
+  <!-- AOS CSS for animations -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
+</head>
+
+
+<style>
+       @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap");
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&display=swap');
+
+  body {
+background: linear-gradient(135deg, #f3f0eb, #e8e2d9, #f5f2ec);
+color: #ffffff;
+font-family: 'Montserrat', Arial, sans-serif;
+margin: 0;  
+justify-content: center;
+align-items: center;
+ overflow-x: hidden;
+ 
+}
+:root {
+  --yellow: #ffcc00;
+}
+
+body::-webkit-scrollbar {
+  width: 1rem;
+}
+body::-webkit-scrollbar-track {
+  background: transparent;
+}
+body::-webkit-scrollbar-thumb {
+  background: var(--yellow);
+}
+
+
+ 
+/* ------------------------------ */
+/* NAVBAR STYLES */
+/* ------------------------------ */
+
+.navbar {
+      background: linear-gradient(to right, #3d0017, #800033, #4f0022);
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      color: white;
+    }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0px; /* Fixed gap value */
+    font-size: 31px;
+    color: #ffffff;
+  }
+  
+  strong {
+    font-weight: 600;
+  }
+  
+  .nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  h1, h2 {
+    font-size: 40px;
+    margin-top: 40px;
+  }
+  
+  .logo img {
+    height: 90px;
+  }
+  
+ 
+  .nav-links a {
+  margin-left: 30px;
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: rgb(245, 222, 179);
+  font-weight: bold;
+}
+
+.nav-links a.active {
+  color: rgb(245, 222, 179);
+  font-weight: bold;
+  border-bottom: 2px solid rgb(245, 222, 179); /* Optional visual */
+}
+
+  
+  /* ------------------------------ */
+  /* Mobile-specific Navbar Styles */
+  /* ------------------------------ */
+  
+  /* Between 900px and 250px */
+  @media (max-width: 900px)  {
+    /* Hide nav-links initially */
+    .nav-links {
+      display: none;  /* Hide links on smaller screens */
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      position: absolute;  /* Fix the nav to the top */
+      top: 60px;  /* Adjust the space from the navbar */
+      left: 0;
+      background-color: #3d0017;  /* Set a background color */
+      padding: 20px 0;
+    }
+  
+    .nav-links a {
+      margin: 10px 0;
+    }
+  
+    /* Show hamburger menu (only on mobile) */
+    .hamburger {
+      display: block;
+      background-color: transparent;
+      border: none;
+      color: #ffffff;
+      font-size: 30px;
+      cursor: pointer;
+    }
+  
+    /* When navbar is active, show nav-links */
+    .navbar.active .nav-links {
+      display: flex;
+    }
+  }
+  
+  /* Remove nav-links after 900px */
+  @media (min-width: 901px) {
+    .nav-links {
+      display: none !important; /* Hide nav-links on screens greater than 900px */
+    }
+  
+    /* Show hamburger button only on smaller screens */
+    .hamburger {
+      display: none !important;
+    }
+  }
+  
+  /* Desktop Styles (Larger than 900px) */
+  @media (min-width: 901px) {
+    .nav-links {
+      display: flex !important;  /* Always show nav-links on larger screens */
+      flex-direction: row;  /* Make nav links appear in a row */
+      justify-content: flex-end;  /* Align links to the right */
+    }
+  
+    .nav-links a {
+      margin-left: 30px;
+    }
+  }
+  /* For screens between 201px and 300px */
+@media (max-width: 400px) and (min-width: 301px) {
+  .nav-links {
+    flex-direction: column;
+    font-size: 10px;
+  }
+.logo {
+    display: flex;
+
+    align-items: center;
+    gap: 0px;
+    font-size: 18px;
+    color: #ffffff;
+}
+  .nav-links a {
+    margin: 8px 0;
+    font-size: 14px;
+  }
+
+  .logo img {
+    height: 27px;
+}
+
+  .logo span {
+    font-size: 1.2rem;
+  }
+
+  .hamburger {
+    font-size: 25px;
+  }
+}
+  
+/* For screens between 201px and 300px */
+@media (max-width: 300px) and (min-width: 250px) {
+  .nav-links {
+    flex-direction: column;
+    font-size: 10px;
+  }
+.logo {
+    display: flex;
+
+    align-items: center;
+    gap: 0px;
+    font-size: 18px;
+    color: #ffffff;
+}
+  .nav-links a {
+    margin: 8px 0;
+    font-size: 14px;
+  }
+
+  .logo img {
+    height: 27px;
+}
+
+  .logo span {
+    font-size: 1.2rem;
+  }
+
+  .hamburger {
+    font-size: 25px;
+  }
+}
+
+@media (max-width: 250px) and (min-width: 201px) {
+
+.logo {
+    display: flex;
+
+    align-items: center;
+    gap: 0px;
+    font-size: 18px;
+    color: #ffffff;
+}
+ 
+  .logo img {
+    height: 21px;
+}
+
+  .logo span {
+    font-size: 1rem;
+  }
+
+  .hamburger {
+    font-size: 25px;
+  }
+}
+
+/* For screens between 101px and 200px */
+@media (max-width: 201px) and (min-width: 101px) {
+  .nav-links {
+    flex-direction: column;
+    font-size: 8px;
+  }
+
+  .nav-links a {
+    margin: 6px 0;
+    font-size: 12px;
+  }
+
+ .logo img {
+    height: 26px;
+}
+ .logo span {
+        font-size: 8px;
+    }
+  .hamburger {
+    font-size: 22px;
+  }
+}
+
+/* For screens 100px and below */
+@media (max-width: 100px) {
+  .nav-links {
+    flex-direction: column;
+    font-size: 10px;
+  }
+
+  .nav-links a {
+    margin: 4px 0;
+    font-size: 10px;
+  }
+
+  .logo img {
+    max-height: 25px;
+  }
+
+  .logo span {
+    font-size: 0.9rem;
+  }
+
+  .hamburger {
+    font-size: 24px;
+  }
+}
+
+
+/* ================================
+    WIDE CATEGORY RESPONSIVE (1300px to 100px)
+================================ */
+.carousel-wrapper {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  overflow: hidden;
+  border-radius: 16px;
+}
+.carousel-text {
+    position: absolute;
+    bottom: 20px;
+    left: 30px;
+    font-size: 34px;
+    color: #320008;
+    font-weight: 500;
+    z-index: 2;
+}
+@media (max-width: 1300px) {
+  .wide-category-section h2,
+  #wide {
+    font-size: 3rem;
+  }
+
+  .carousel-wrapper {
+    height: 350px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .wide-category-section h2,
+  #wide {
+    font-size: 2.8rem;
+  }
+
+  .carousel-wrapper {
+    height: 320px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .wide-category-section h2,
+  #wide {
+    font-size: 2.6rem;
+  }
+
+  .carousel-wrapper {
+    height: 300px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .wide-category-section h2,
+  #wide {
+    font-size: 2.4rem;
+  }
+
+  .carousel-wrapper {
+    height: 280px;
+  }
+}
+
+@media (max-width: 900px) {
+  .wide-category-section h2,
+  #wide {
+    font-size: 2.2rem;
+  }
+
+  .carousel-wrapper {
+    height: 260px;
+  }
+}
+
+@media (max-width: 800px) {
+  .wide-category-section h2,
+  #wide {
+    font-size: 2rem;
+  }
+
+  .carousel-wrapper {
+    height: 240px;
+  }
+}
+
+@media (max-width: 700px) {
+  .wide-category-section h2,
+  #wide {
+    font-size: 1.8rem;
+  }
+
+  .carousel-wrapper {
+    height: 220px;
+  }
+}
+
+@media (max-width: 600px) {
+  .wide-category-section {
+    margin-top: -60px;
+    margin-bottom: 60px;
+    padding: 0 10px;
+  }
+
+  .wide-category-section h2,
+  #wide {
+    font-size: 1.6rem;
+    margin-bottom: 25px;
+  }
+
+  .wide-category-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 20px 0;
+  }
+
+  .category-card h3 {
+    font-size: 16px;
+    padding: 8px;
+  }
+
+  .carousel-wrapper {
+    height: 200px;
+  }
+
+  .carousel-text {
+    font-size: 18px;
+  }
+
+  .small-pattern {
+    width: 100px;
+    height: 100px;
+  }
+
+  .carousel-controls button {
+    padding: 8px 10px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 500px) {
+  .wide-category-section h2,
+  #wide {
+    font-size: 1.4rem;
+  }
+
+  .carousel-wrapper {
+    height: 180px;
+  }
+}
+.small-pattern {
+    border: 2px solid #461626;
+}
+
+@media (max-width: 400px) {
+  .wide-category-section h2,
+  #wide {
+    font-size: 1.3rem;
+  }
+
+  .carousel-wrapper {
+    height: 160px;
+  }
+  .carousel-text {
+        font-size: 13px;
+    }
+        .small-pattern {
+        width: 66px;
+        height: 62px;
+    }
+        .wide-category-section {
+        margin-top: -18px;
+        margin-bottom: 60px;
+        padding: 0 10px;
+    }
+}
+.small-pattern {
+    border: 2px solid #461626;
+}
+@media (max-width: 300px) {
+  .wide-category-section h2,
+  #wide {
+    font-size: 1rem;
+  }
+
+  .carousel-wrapper {
+    height: 140px;
+  }
+  .carousel-text {
+        font-size: 12px;
+    }
+        .small-pattern {
+        width: 66px;
+        height: 62px;
+    }
+        .wide-category-section {
+        margin-top: -18px;
+        margin-bottom: 60px;
+        padding: 0 10px;
+    }
+}
+.small-pattern {
+    border: 2px solid #461626;
+}
+
+@media (max-width: 200px) {
+  .wide-category-section h2,
+  #wide {
+    font-size: 0.9rem;
+  }
+
+  .carousel-wrapper {
+    height: 120px;
+  }
+  .carousel-text {
+        font-size: 10px;
+    }
+    .small-pattern {
+    border: 2px solid #461626;
+}
+    .wide-category-section {
+        margin-top: -18px;
+        margin-bottom: 60px;
+        padding: 0 10px;
+    }
+}
+
+@media (max-width: 100px) {
+  .wide-category-section h2,
+  #wide {
+    font-size: 0.8rem;
+  }
+
+  .carousel-wrapper {
+    height: 100px;
+  }
+  .small-pattern {
+  
+    border: 2px solid #461626;
+}
+    .wide-category-section {
+        margin-top: -18px;
+        margin-bottom: 60px;
+        padding: 0 10px;
+    }
+}
+
+/* ============================
+   WHY MEERU RESPONSIVE START
+============================ */
+
+
+@media (max-width: 1200px) {
+  .features-row {
+    gap: 100px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .feature-icon {
+    width: 130px;
+    height: 130px;
+  }
+  .feature-card.icon {
+    min-width: 140px;
+    min-height: 100px;
+    font-size: 24px;
+  }
+  .feature-text {
+    width: 170px;
+    font-size: 20px;
+  }
+  .whyM {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .features-row {
+    gap: 80px;
+  }
+  .feature-icon {
+    width: 120px;
+    height: 120px;
+  }
+  .feature-card.icon {
+    min-width: 120px;
+    min-height: 90px;
+    font-size: 22px;
+  }
+  .feature-text {
+    width: 160px;
+    font-size: 19px;
+  }
+  .whyM {
+    font-size: 2.8rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .features-row {
+    gap: 60px;
+  }
+  .feature-icon {
+    width: 110px;
+    height: 110px;
+  }
+  .feature-card.icon {
+    min-width: 100px;
+    min-height: 80px;
+    font-size: 20px;
+  }
+  .feature-text {
+    width: 150px;
+    font-size: 18px;
+  }
+  .whyM {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .features-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+  .feature-item {
+    max-width: 100%;
+    text-align: center;
+  }
+  .feature-icon {
+    width: 100px;
+    height: 100px;
+  }
+  .feature-card.icon {
+    min-width: 90px;
+    min-height: 70px;
+    font-size: 18px;
+    margin-right: 0;
+  }
+  .feature-text {
+    width: 100%;
+    font-size: 16px;
+  }
+     .whyM {
+        font-size: 2rem;
+        margin: inherit;
+    }
+}
+
+
+/* Fix icon images to fit perfectly inside the circle without cropping or overflow */
+.feature-icon img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: scale-down; /* Scale down if bigger, no cropping */
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto;
+  transition: filter 0.3s ease;
+}
+
+
+
+
+
+@media (max-width: 300px) {
+  .feature-card.icon {
+    min-width: 90px;
+    min-height: 70px;
+    font-size: 18px;
+  }
+  .feature-text {
+    font-size: 16px;
+    width: 150px;
+  }
+}
+.feature-icon img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: scale-down; /* scale down if needed but never crop */
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto;
+  transition: filter 0.3s ease;
+}
+
+/* ============================
+   WHY MEERU RESPONSIVE END
+============================ */
+
+
+/* ============================
+   TRENDING PRODUCTS SECTION
+============================ */
+.product-section {
+  max-width: 1300px;
+  margin: auto;
+  text-align: center;
+  margin-top: 90px;
+}
+
+.product-section h2 {
+  font-size: 36px;
+  font-weight: 600;
+  margin-bottom: 40px;
+}
+
+.product-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.product-card {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  border: 2px solid #832b4a;
+  border-radius: 20px;
+  overflow: hidden;
+  padding: 17px;
+  box-sizing: border-box;
+}
+
+.product-card img {
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  object-fit: cover;
+  display: block;
+}
+
+.hover-content {
+  position: absolute;
+  bottom: 10px;
+  left: 8px;
+  right: 8px;
+  height:120px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  border-radius: 0 0 15px 15px;
+  padding: 12px 15px;
+  font-size: 14px;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.product-card:hover .hover-content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.hover-content h6 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.hover-content p {
+  margin: 5px 0 0;
+  line-height: 1.4;
+  font-size: 13px;
+}
+#tre {
+
+  font-weight: 500;
+  font-size: 3.5rem;
+  margin-bottom: 40px;
+  color: black;
+  
+  }
+
+
+/* ========================
+   RESPONSIVE MEDIA QUERIES
+=========================== */
+
+/* 1200px */
+@media (max-width: 1200px) {
+  #tre {
+    font-size: 3rem;
+  }
+}
+
+/* 1100px */
+@media (max-width: 1100px) {
+  #tre {
+    font-size: 2.8rem;
+  }
+}
+
+/* 1000px */
+@media (max-width: 1000px) {
+  .product-card {
+    width: 280px;
+    height: 280px;
+  }
+}
+
+/* 900px */
+@media (max-width: 900px) {
+  #tre {
+    font-size: 2.5rem;
+  }
+}
+
+/* 800px */
+@media (max-width: 800px) {
+  .product-card {
+    width: 260px;
+    height: 260px;
+  }
+}
+
+/* 700px */
+@media (max-width: 700px) {
+  #tre {
+     font-size: 30px;
+  }
+}
+
+/* 600px */
+@media (max-width: 600px) {
+  .product-card {
+    width: 240px;
+    height: 240px;
+  }
+   #tre {
+     font-size: 25px;
+  }
+}
+
+/* 500px */
+@media (max-width: 500px) {
+  .product-grid {
+    justify-content: center;
+  }
+  .product-card {
+    width: 220px;
+    height: 220px;
+  }
+}
+
+/* 400px */
+@media (max-width: 400px) {
+  .product-card {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+/* 300px */
+@media (max-width: 300px) {
+  .product-card {
+    width: 180px;
+    height: 180px;
+  }
+  #tre {
+    font-size: 1rem;
+  }
+}
+
+ 
+/* ============================ 
+   RESPONSIVE ADJUSTMENTS 
+============================ */
+@media screen and (max-width: 1450px) {
+  .container {
+    margin: 30px auto;
+  }
+
+  .section-title {
+    font-size: 44px;
+    margin-bottom: 50px;
+  }
+
+  .section-heading {
+    font-size: 36px;
+  }
+
+  .custom-row .col-md-6 {
+    padding: 15px;
+  }
+
+  #who {
+    font-size: 3rem;
+    margin-bottom: 30px;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .container {
+    margin: 20px auto;
+  }
+
+  .section-title {
+    font-size: 40px;
+    margin-bottom: 40px;
+  }
+
+  .section-heading {
+    font-size: 32px;
+  }
+
+  .custom-row .col-md-6 {
+    padding: 10px;
+  }
+
+  #who {
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .container {
+    margin: 15px auto;
+  }
+
+  .section-title {
+    font-size: 36px;
+    margin-bottom: 30px;
+  }
+
+  .section-heading {
+    font-size: 28px;
+  }
+
+  .custom-row .col-md-6 {
+    padding: 8px;
+  }
+
+  #who {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .custom-row .col-md-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding: 10px;
+  }
+
+  #who {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .section-title {
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+
+  .section-heading {
+    font-size: 24px;
+  }
+
+  .custom-row .col-md-6 {
+    padding: 5px;
+  }
+
+  #who {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .section-title {
+    font-size: 26px;
+    margin-bottom: 15px;
+  }
+
+  .section-heading {
+    font-size: 20px;
+  }
+
+  .custom-row .col-md-6 {
+    padding: 5px;
+  }
+
+  #who {
+    font-size: 1.8rem;
+  }
+}
+
+
+
+/* ================================
+   RESPONSIVE ADJUSTMENTS 
+================================ */
+/* ================================
+   Responsive Breakpoints (100px steps)
+================================ */
+
+/* ========== RESPONSIVE (100px intervals) ========== */
+
+/* Max-width 1200px */
+@media (max-width: 1200px) {
+  #cul {
+    font-size: 3.2rem;
+  }
+}
+
+/* Max-width 1100px */
+@media (max-width: 1100px) {
+  #cul {
+    font-size: 3rem;
+  }
+}
+
+/* Max-width 1000px */
+@media (max-width: 1000px) {
+  #cul {
+    font-size: 2.8rem;
+  }
+  .cultured-stones p {
+    font-size: 15px;
+  }
+}
+
+/* Max-width 900px */
+@media (max-width: 900px) {
+  .feature-card {
+    flex-direction: column;
+    text-align: center;
+    border-radius: 80px;
+  }
+
+  .feature-card .icon {
+    margin: 0 0 15px 0;
+  }
+}
+
+/* Max-width 800px */
+@media (max-width: 800px) {
+  #cul {
+    font-size: 2.6rem;
+  }
+  .cultured-stones p {
+    font-size: 14.5px;
+  }
+}
+
+/* Max-width 700px */
+@media (max-width: 700px) {
+  .cultured-stones {
+    padding: 50px 15px;
+  }
+}
+
+/* Max-width 600px */
+@media (max-width: 600px) {
+  #cul {
+    font-size: 2.4rem;
+  }
+  .feature-card {
+    border-radius: 60px;
+  }
+}
+
+/* Max-width 500px */
+@media (max-width: 500px) {
+  .cultured-stones p {
+    font-size: 14px;
+  }
+
+  .feature-card h3 {
+    font-size: 17px;
+  }
+
+  .feature-card p {
+    font-size: 13px;
+  }
+}
+
+/* Max-width 400px */
+@media (max-width: 400px) {
+  #cul {
+    font-size: 2rem;
+  }
+
+  .cultured-stones {
+    padding: 40px 10px;
+  }
+
+  .feature-card {
+    padding: 15px;
+  }
+}
+
+/* Max-width 300px */
+@media (max-width: 300px) {
+  #cul {
+    font-size: 1.6rem;
+  }
+
+  .feature-card h3 {
+    font-size: 15px;
+  }
+
+  .feature-card p {
+    font-size: 12px;
+  }
+
+  .cultured-stones p {
+    font-size: 13px;
+  }
+}
+
+/* Max-width 200px */
+@media (max-width: 200px) {
+  #cul {
+    font-size: 1rem;
+  }
+
+  .feature-card {
+    padding: 10px;
+  }
+
+  .feature-card h3 {
+    font-size: 12px;
+  }
+
+  .feature-card p {
+    font-size: 11px;
+  }
+}
+
+/* Max-width 100px */
+@media (max-width: 100px) {
+  #cul {
+    font-size: 0.8rem;
+  }
+
+  .feature-card h3 {
+    font-size: 10px;
+  }
+
+  .feature-card p {
+    font-size: 9px;
+  }
+
+  .cultured-stones {
+    padding: 20px 5px;
+  }
+}
+
+
+
+/* ================================
+   RESPONSIVE BREAKPOINTS
+================================ */
+
+@media (max-width: 1200px) {
+  .project-card {
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .project-card {
+    max-width: 450px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .project-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .project-image {
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+
+  .read-more {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .project-card {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .projects-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .project-card {
+    width: 90%;
+  }
+}
+
+@media (max-width: 600px) {
+  .project-title {
+    font-size: 1.1rem;
+  }
+
+  .project-description,
+  .read-more {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-image {
+    width: 100%;
+    height: auto;
+  }
+
+  .zoom-box,
+  .caption,
+  .nav-buttons {
+    display: none;
+  }
+}
+@media (max-width: 380px) {
+  .project-image {
+    width: 100%;
+    height: auto;
+  }
+
+  .zoom-box,
+  .caption,
+  .nav-buttons {
+    display: none;
+  }
+}
+@media (max-width: 280px) {
+  .project-image {
+    width: 100%;
+    height: auto;
+  }
+
+  .zoom-box,
+  .caption,
+  .nav-buttons {
+    display: none;
+  }
+}
+/* Responsive font sizes */
+@media (max-width: 1200px) {
+  #our {
+    font-size: 2.3rem;
+  }
+}
+
+@media (max-width: 1100px) {
+  #our {
+    font-size: 2.1rem;
+  }
+}
+
+@media (max-width: 1000px) {
+  #our {
+    font-size: 1.9rem;
+  }
+}
+
+@media (max-width: 900px) {
+  #our {
+    font-size: 1.7rem;
+  }
+}
+
+@media (max-width: 768px) {
+  #our {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 600px) {
+  #our {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  #our {
+    font-size: 1.4rem;
+  }
+}
+
+
+
+
+
+
+
+/* VIDEO SECTIO RESPONSIVE  */
+
+@media (max-width: 1200px) {
+  .pattern-card {
+    width: 400px;
+    height: 270px;
+  }
+
+}
+
+@media (max-width: 1100px) {
+  .pattern-card {
+    width: 380px;
+    height: 256px;
+  }
+  
+}
+
+@media (max-width: 1000px) {
+  .pattern-card {
+    width: 360px;
+    height: 243px;
+  }
+ 
+}
+
+@media (max-width: 900px) {
+  .pattern-card {
+    width: 340px;
+    height: 230px;
+  }
+ 
+}
+
+@media (max-width: 800px) {
+  .pattern-card {
+    width: 320px;
+    height: 216px;
+  }
+
+}
+
+@media (max-width: 700px) {
+  .pattern-card {
+    width: 300px;
+    height: 202px;
+  }
+ 
+}
+
+@media (max-width: 600px) {
+  .pattern-card {
+    width: 280px;
+    height: 189px;
+  }
+ 
+}
+
+@media (max-width: 500px) {
+  .pattern-card {
+    width: 260px;
+    height: 175px;
+  }
+  .play-btn {
+    width: 30px;
+    height: 30px;
+  }
+  .play-btn::before {
+    border-left: 8px solid #7c318f;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+  }
+
+}
+
+@media (max-width: 400px) {
+  .pattern-card {
+    width: 240px;
+    height: 162px;
+  }
+
+}
+
+@media (max-width: 300px) {
+  .pattern-card {
+    width: 220px;
+    height: 148px;
+  }
+ 
+}
+
+@media (max-width: 200px) {
+  .pattern-card {
+    width: 200px;
+    height: 135px;
+  }
+  .play-btn {
+    width: 25px;
+    height: 25px;
+  }
+  .play-btn::before {
+    border-left: 6px solid #7c318f;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+  }
+
+}
+
+@media (max-width: 100px) {
+  .pattern-card {
+    width: 100%;
+    height: auto;
+  }
+  .play-btn {
+    width: 20px;
+    height: 20px;
+  }
+  .play-btn::before {
+    border-left: 5px solid #7c318f;
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+  }
+
+}
+
+/* TESTIMONIAL SECTION RESPONSIVE */
+
+@media (max-width: 1200px) {
+  .testimonial-card {
+    padding: 25px 35px;
+    max-width: 650px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .testimonial-card {
+    padding: 20px 30px;
+    max-width: 600px;
+  }
+
+  .testimonial-card h4 {
+    font-size: 1.3rem;
+  }
+
+  .testimonial-card p {
+    font-size: 0.95rem;
+  }
+
+  .stars {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .testimonial-card {
+    padding: 20px;
+    max-width: 90%;
+  }
+
+  .testimonial-card h4 {
+    font-size: 1.2rem;
+  }
+
+  .testimonial-card p {
+    font-size: 0.9rem;
+  }
+
+  .stars {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .testimonial-card h4 {
+    font-size: 1.1rem;
+  }
+
+  .testimonial-card p {
+    font-size: 0.85rem;
+  }
+
+  .stars {
+    font-size: 1.2rem;
+  }
+
+  .profile img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .profile.active img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .profile-name {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .testimonial-card {
+    padding: 15px;
+  }
+.profile.active {
+    background-color: #333;
+    display: none;
+}
+  .testimonial-card h4 {
+    font-size: 1rem;
+  }
+.testimonial-heading {
+    font-size: 2rem;}
+
+  .testimonial-card p {
+    font-size: 0.8rem;
+  }
+
+  .stars {
+    font-size: 1.1rem;
+  }
+
+  .profile img {
+    width: 45px;
+    height: 45px;
+  }
+
+  .profile.active img {
+    width: 55px;
+    height: 55px;
+  }
+
+  .profile-name {
+    font-size: 12px;
+  }
+}
+   
+
+/* BRANCH SECTION RESPONSIVE */
+
+/* For screen width 1200px and below */
+@media (max-width: 1200px) {
+  .branches-section h2 {
+    font-size: 2.2rem;
+  }
+
+  .branch-card {
+    width: 420px;
+  }
+}
+
+/* For screen width 1100px and below */
+@media (max-width: 1100px) {
+  .branches-section h2 {
+    font-size: 2rem;
+  }
+
+  .branch-card {
+    width: 400px;
+  }
+}
+
+/* For screen width 1000px and below */
+@media (max-width: 1000px) {
+  .branches-section h2 {
+    font-size: 1.8rem;
+  }
+
+  .branch-card {
+    width: 350px;
+  }
+}
+
+/* For screen width 900px and below */
+@media (max-width: 900px) {
+  .branches-section h2 {
+    font-size: 1.6rem;
+  }
+
+  .branch-card {
+    width: 320px;
+  }
+}
+
+/* For screen width 800px and below */
+@media (max-width: 800px) {
+  .branches-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .branch-card {
+    width: 290px;
+  }
+}
+
+/* For screen width 700px and below */
+@media (max-width: 700px) {
+  .branches-section h2 {
+    font-size: 1.3rem;
+  }
+
+  .branch-card {
+    width: 260px;
+  }
+}
+
+/* For screen width 600px and below */
+@media (max-width: 600px) {
+  .branches-section h2 {
+    font-size: 1.2rem;
+  }
+
+  .branch-card {
+    width: 220px;
+  }
+}
+
+/* For screen width 500px and below */
+@media (max-width: 500px) {
+  .branches-section h2 {
+    font-size: 2rem;
+  }
+
+  .branch-card {
+    width: 220px;
+  }
+}
+
+/* For screen width 480px and below */
+@media (max-width: 480px) {
+  .branches-section h2 {
+    font-size: 2rem;
+  }
+
+  .branch-card {
+    width: 100%;
+    margin: 10px 0;
+  }
+}
+
+/* ================================
+   UNIVERSAL FOOTER SECTION
+================================ */
+
+/* Background */
+.retirement-footer {
+  background-image: url("/static/image/footer.png");
+  background-size: cover;
+  background-position: center;
+  height: auto;
+  padding: 3rem 1rem;
+  color: white;
+  text-align: center;
+}
+
+/* Footer Logo/Image */
+.retirement-footer .footer-logo,
+img.mb-3 {
+  width: 20%;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+/* Footer Main Heading */
+#mu {
+  font-size: 3rem;
+  color: #b88d02;
+  margin-bottom: 0.5rem;
+}
+
+/* Shining Gradient Text Animation */
+.retirement-shine-text {
+  font-weight: bold;
+  font-size: 1.5rem;
+  background: linear-gradient(90deg,
+    #ffffff 0%,
+    #ffcc70 20%,
+    #ffffff 40%,
+    #ffcc70 60%,
+    #ffffff 80%);
+  background-size: 200% auto;
+  color: #b88d02;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: retirement-shine 6s linear infinite;
+  margin-bottom: 0.3rem;
+}
+
+/* Animation Keyframes */
+@keyframes retirement-shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* Tagline */
+.retirement-footer p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #f0f0f0;
+}
+
+/* Social Icons Container */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Social Icon Links */
+.social-icons a {
+  margin: 0 15px;
+  font-size: 1.8rem;
+  color: white;
+  transition: transform 0.3s, color 0.3s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+/* Hover Effects */
+.social-icons a:hover {
+  transform: scale(1.2);
+  color: #ffcc70;
+}
+
+/* Copyright */
+.retirement-footer p.text-white {
+  margin-bottom: 0.3rem;
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+/* ================================
+   RESPONSIVE FOOTER STYLES
+================================ */
+
+@media (max-width: 768px) {
+  .retirement-footer .footer-logo,
+  img.mb-3 {
+    width: 40%;
+  }
+
+  #mu {
+    font-size: 2.2rem;
+  }
+
+  .retirement-shine-text {
+    font-size: 1.2rem;
+  }
+
+  .social-icons a {
+    font-size: 1.5rem;
+    margin: 0 12px;
+  }
+
+  .retirement-footer p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .retirement-footer .footer-logo,
+  img.mb-3 {
+    width: 60%;
+  }
+
+  #mu {
+    font-size: 1.8rem;
+  }
+
+  .retirement-shine-text {
+    font-size: 1rem;
+  }
+
+  .social-icons a {
+    font-size: 1.3rem;
+    margin: 0 10px;
+  }
+
+  .retirement-footer p {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .retirement-footer .footer-logo,
+  img.mb-3 {
+    width: 80%;
+  }
+
+  #mu {
+    font-size: 1.5rem;
+  }
+
+  .retirement-shine-text {
+    font-size: 0.9rem;
+  }
+
+  .social-icons a {
+    font-size: 1.1rem;
+    margin: 0 8px;
+  }
+
+  .retirement-footer p {
+    font-size: 0.8rem;
+  }
+}
+/* Base styles */
+.footer-text {
+  margin: 0;
+  padding: 0;
+  line-height: 1.2;
+}
+
+.footer-text p {
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+  color: white;
+}
+
+/* Slightly lighter color for the developer name */
+.footer-text p:last-child {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  margin-top: 0.2rem;
+}
+
+/* Responsive tweaks */
+@media (max-width: 576px) {
+  .footer-text p {
+    font-size: 0.8rem;
+  }
+
+  .footer-text p:last-child {
+    font-size: 0.67rem;
+  }
+}
+
+
+
+/* ------------------------------ */
+/* SLIDER STYLES */
+/* ------------------------------ */
+.slider-wrapper {
+  width: 95%;
+  height: 50vh;
+  margin-top: 15px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 30px;
+  margin-left: 2.3rem;
+}
+
+.slider-container {
+  width: 100%;
+  height: 100%;
+  
+  position: relative;
+}
+
+.slide {
+position: absolute;
+width: 100%;
+height: 100%;
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 40px;
+color: white;
+background-size: cover;
+background-position: center;
+opacity: 0;
+transition: opacity 1s ease-in-out;  /* Transition for smooth fade-in/out */
+}
+
+.slide.active {
+opacity: 1;
+z-index: 1;
+}
+
+.slide-content {
+  width: 50%;
+  padding: 20px;
+}
+
+.slide-content h2 {
+  font-size: 48px;
+  color: #f1c55b;
+  margin: 0 0 20px;
+}
+
+.slide-content p {
+  font-size: 24px;
+  color: #fbaac0;
+}
+
+.slide-shapes {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 50%;
+  flex-wrap: wrap;
+  position: relative;
+
+}
+
+.shape-tri, .shape-tri.mid, .shape-tri.last {
+  width: 290px;
+  height: 270px;
+  background-size: cover;
+  background-position: center;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  
+  margin: 11px -30px;
+
+}
+
+.shape-tri.mid {
+  transform: rotate(180deg);
+  margin: -15px -85px;
+}
+
+.shape-circ, .shape-circ.mid, .shape-circ.last {
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+
+  background-size: cover;
+  background-position: center;
+  margin: 0 -30px;
+  z-index: 1;
+}
+
+.shape-circ.mid {
+  z-index: 2;
+}
+
+.shape-boxy, .shape-boxy.mid, .shape-boxy.last {
+    width: 240px;
+    height: 230px;
+    border-radius: 12px;
+    /* border: 1px solid gold; */
+    background-size: cover;
+    background-position: center;
+    margin: 5px -30px;
+    z-index: 1;
+}
+
+.shape-boxy.mid {
+ margin-top: 5rem;
+}
+
+
+
+.mb-3 {
+margin-bottom: 1rem !important;
+font-size: 2rem;
+}
+
+
+/* HOME SLIDER RESPONSIVE */
+
+@media (max-width: 1200px) {
+  .slide-content h2 { font-size: 42px; }
+  .slide-content p { font-size: 22px; }
+}
+
+@media (max-width: 1100px) {
+  .slide-content h2 { font-size: 38px; }
+  .slide-content p { font-size: 20px; }
+}
+
+@media (max-width: 1000px) {
+  .slide-content h2 { font-size: 34px; }
+  .slide-content p { font-size: 18px; }
+  .shape-tri, .shape-circ, .shape-boxy {
+    width: 220px;
+    height: 210px;
+  }
+}
+
+@media (max-width: 900px) {
+  .slide-content { width: 55%; }
+  .slide-shapes { width: 45%; }
+  .slide-content h2 { font-size: 30px; }
+  .slide-content p { font-size: 16px; }
+}
+
+@media (max-width: 800px) {
+  .slide {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+  }
+  .slide-content, .slide-shapes {
+    width: 100%;
+  }
+  .slide-shapes {
+    justify-content: center;
+    margin-top: 20px;
+  }
+  .shape-tri, .shape-circ, .shape-boxy {
+    width: 272px;
+    height: 247px;
+  }
+  .slide-shapes .mid,
+  .slide-shapes .last {
+    display: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .slide-content h2 { font-size: 28px; }
+  .slide-content p { font-size: 15px; }
+  .shape-tri, .shape-circ, .shape-boxy {
+    width: 180px;
+    height: 170px;
+  }
+}
+
+@media (max-width: 600px) {
+  .slide-content h2 { font-size: 24px; }
+  .slide-content p { font-size: 14px; }
+}
+
+@media (max-width: 500px) {
+  .slide-content h2 { font-size: 20px; }
+  .slide-content p { font-size: 13px; }
+}
+
+@media (max-width: 400px) {
+  .shape-tri, .shape-circ, .shape-boxy {
+    width: 140px;
+    height: 130px;
+    
+  }
+  .slide-content h2 { font-size: 20px; }
+  .slide-content p { font-size: 13px; }
+      .shape-tri, .shape-circ, .shape-boxy {
+        width: 140px;
+        height: 98px;
+        margin-top: -2rem;
+    }
+}
+
+@media (max-width: 300px) {
+  .slide-content h2 { font-size: 16px; }
+  .slide-content p { font-size: 12px; }
+}
+@media (max-width: 1200px) {
+  .slider-wrapper { width: 94%; height: 48vh;  }
+}
+
+@media (max-width: 1150px) {
+  .slider-wrapper { width: 93%; height: 47vh; }
+}
+
+@media (max-width: 1100px) {
+  .slider-wrapper { width: 92%; height: 46vh; }
+}
+
+@media (max-width: 1050px) {
+  .slider-wrapper { width: 91%; height: 45vh; }
+}
+
+@media (max-width: 1000px) {
+  .slider-wrapper { width: 90%; height: 44vh; }
+}
+
+@media (max-width: 950px) {
+  .slider-wrapper { width: 89%; height: 42vh; }
+}
+
+@media (max-width: 900px) {
+  .slider-wrapper { width: 88%; height: 40vh; }
+}
+
+@media (max-width: 850px) {
+  .slider-wrapper { width: 87%; height: 38vh; }
+}
+
+@media (max-width: 800px) {
+  .slider-wrapper { width: 93%; height: 36vh; }
+}
+
+@media (max-width: 750px) {
+  .slider-wrapper { width: 90%; height: 34vh; }
+}
+
+@media (max-width: 700px) {
+  .slider-wrapper { width: 90%; height: 32vh; }
+}
+
+@media (max-width: 650px) {
+  .slider-wrapper { width: 90%; height: 30vh; }
+}
+
+@media (max-width: 600px) {
+  .slider-wrapper { width: 89%; height: 45vh; }
+}
+
+@media (max-width: 550px) {
+  .slider-wrapper { width: 89%; height: 44vh; }
+}
+
+@media (max-width: 500px) {
+  .slider-wrapper { width: 89%; height: 43vh;margin: 0 auto; }
+}
+
+@media (max-width: 450px) {
+  .slider-wrapper { width: 88%; height: 42vh; margin: 0 auto;margin-top: 1.5rem;}
+}
+
+@media (max-width: 400px) {
+  .slider-wrapper { width: 88%; height: 40vh; margin: 0 auto; margin-top: 1.5rem;}
+}
+
+@media (max-width: 350px) {
+  .slider-wrapper { width: 85%; height: 38vh; margin: 0 auto;  margin-top: 1.5rem;}
+}
+
+@media (max-width: 320px) {
+  .slider-wrapper { width: 84%; height: 36vh; margin: 0 auto;  margin-top: 1.5rem;}
+   .slide-content h2 { font-size: 15px; }
+  .slide-content p { font-size: 11px; }
+      .shape-tri, .shape-circ, .shape-boxy {
+        width: 140px;
+        height: 98px;
+        margin-top: -2rem;
+    }
+}
+@media (max-width: 300px) {
+  .slider-wrapper { width: 83%; height: 35vh; }
+
+      .slide-content p {
+        font-size: 7px;
+    }
+    .slide-content h2 {
+        font-size: 11px;
+    }
+
+
+}
+@media (max-width: 250px) {
+  .slider-wrapper { width: 80%; height: 34vh; }
+
+       .slide-content p {
+        font-size: 5px;
+    }
+    .slide-content h2 {
+        font-size: 9px;
+    }
+        .shape-tri, .shape-circ, .shape-boxy {
+        width: 113px;
+        height: 98px;
+        margin-top: -2rem;
+    }
+}
+@media (max-width: 201px) {
+  .slider-wrapper { width: 72%; height: 33vh; }
+   .slide-content h2 { font-size: 8px; }
+  .slide-content p { font-size: 6px; }
+}
+
+/* Loader Styles */
+/* Preloader Base */
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #f3f0eb, #e8e2d9, #f5f2ec);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease;
+}
+/* Rotating Border */
+.loader-outer {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 5px solid transparent;
+  border-top: 5px solid #d4452d;
+  border-right: 5px solid #d4452d;
+  animation: rotate 1.5s linear infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* Circular Border */
+.loader-circle {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f3f0eb, #e8e2d9, #f5f2ec);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 10px;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+/* Logo in Center */
+.loader-logo {
+  max-width: 80px;
+  height: auto;
+  margin-bottom: 5px;
+}
+
+/* MEERU CRETE Text */
+.loader-text {
+  font-size: 16px;
+  font-weight: bold;
+  color: #222;
+  letter-spacing: 1px;
+  margin-bottom: 2px;
+}
+
+/* Loading... Text */
+.loader-subtext {
+  font-size: 12px;
+  font-weight: 600;
+  color: #a13b2b;
+}
+
+/* Animation */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* Back to Top */
+#backToTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: none;
+  background: linear-gradient(to right, #bfa53a, #ffdf00, #b8860b);
+  color: rgb(59, 0, 0);
+  border: none;
+  border-radius: 50%;
+  padding: 10px 20px;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 1000;
+  transition: background 0.3s;
+}
+
+#backToTop:hover {
+  background-color: #444;
+}
+
+/* ✅ Responsive Adjustments */
+@media (max-width: 768px) {
+  #backToTop {
+    bottom: 20px;
+    right: 20px;
+    font-size: 18px;
+    padding: 8px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  #backToTop {
+    bottom: 15px;
+    right: 15px;
+    font-size: 16px;
+    padding: 6px 14px;
+  }
+}
+
+@media (max-width: 320px) {
+  #backToTop {
+    bottom: 10px;
+    right: 10px;
+    font-size: 14px;
+    padding: 5px 12px;
+  }
+}
+
+
+#cul {
+  font-weight: 500;
+  font-size: 3rem;
+  margin-bottom: 40px;
+  color: black;
+}
+#branch {
+  font-weight: 500;
+  font-size: 3rem;
+  margin-bottom: 40px;
+  color: black;
+  
+}
+.testimonial-heading{
+  font-weight: 500;
+  font-size: 3rem;
+  margin-bottom: 40px;
+  color: black;
+  font-family: 'Montserrat', Arial, sans-serif;
+}
+#unique {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 500;
+  margin-bottom: 40px;
+  color: #222;
+}
+.projects-heading {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 500;
+  margin-bottom: 40px;
+  color: #222;
+}
+/* heading responsive  */
+
+
+/* Start decreasing every 100px screen width */
+
+@media (max-width: 1100px) {
+  #cul,
+  #branch,
+  .testimonial-heading,
+  #unique {
+    font-size: 2.8rem;
+  }
+}
+
+@media (max-width: 1000px) {
+  #cul,
+  #branch,
+  .testimonial-heading,
+  #unique {
+    font-size: 2.6rem;
+  }
+}
+
+@media (max-width: 900px) {
+  #cul,
+  #branch,
+  .testimonial-heading,
+  #unique {
+    font-size: 2.4rem;
+  }
+}
+
+@media (max-width: 800px) {
+  #cul,
+  #branch,
+  .testimonial-heading,
+  #unique {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 700px) {
+  #cul,
+  #branch,
+  .testimonial-heading,
+  #unique {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  #cul,
+  #branch,
+  .testimonial-heading,
+  #unique {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 500px) {
+  #cul,
+  #branch,
+  .testimonial-heading,
+  #unique {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 400px) {
+  #cul,
+  #branch,
+  .testimonial-heading,
+  #unique {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 300px) {
+  #cul,
+  #branch,
+  .testimonial-heading,
+  #unique {
+    font-size: 1.5rem;
+  }
+}
+/* Product Dropdown */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #4f0022;
+  min-width: 160px;
+  z-index: 1;
+  border-radius: 4px;
+  top: 100%;
+  left: 0;
+}
+
+.dropdown-content a {
+  color: white;
+  padding: 10px 16px;
+  text-decoration: none;
+  display: block;
+  font-weight: 400;
+}
+
+.dropdown-content a:hover {
+  background-color: #800033;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+
+</style>
+
+</head>
+<body>
+<!-- Custom Preloader -->
+<div id="loader">
+  <div class="loader-circle">
+    <img src="{% static 'image/logo.png' %}" alt="Meeru Logo" class="loader-logo">
+   
+    <div class="loader-subtext">LOADING...</div>
+  </div>
+</div>
+
+<!-- Back to Top Button -->
+<button id="backToTop" title="Back to Top">↑</button>
+
+  <!-- Navbar -->
+<header class="navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <!-- Logo Image -->
+      <img src="{% static 'image/logonav.png' %}" alt="Logo" />
+      <span>MERU <strong>CRETE</strong></span>
+    </div>
+
+    <!-- Hamburger Icon (Visible on mobile) -->
+    <button class="hamburger" onclick="toggleNavbar()">&#9776;</button>
+
+    <!-- Navigation Links -->
+<nav class="nav-links">
+  <a href="/" class="{% if request.path == '/' %}active{% endif %}">Home</a>
+ <div class="dropdown">
+    <a href="#" class="{% if request.path|slice:":8" == '/product' %}active{% endif %}">Product ▾</a>
+    <div class="dropdown-content">
+      <a href="/products" class="{% if request.path == '/products' %}active{% endif %}">collection</a>
+    <a href="/product-catalogue" class="{% if request.path == '/product-catalogue' %}active{% endif %}">Catalogue</a>
+    </div>
+  </div>
+  <a href="/about" class="{% if request.path|slice:":6" == '/about' %}active{% endif %}">About Us</a>
+  <a href="/contact" class="{% if request.path|slice:":8" == '/contact' %}active{% endif %}">Contact Us</a>
+</nav>
+
+  </div>
+</header>
+
+
+
+
+  <div class="slider-wrapper"data-aos="fade-up" data-aos-duration="1500">
+    <div class="slider-container">
+      {% for slide in slides %}
+      <div class="slide {% if forloop.first %}active{% endif %}"
+        style="background-image: url('{{ slide.background_image.url }}');">
+        <div class="slide-content">
+          <h2>{{ slide.title|linebreaksbr }}</h2>
+          <p>{{ slide.subtitle }}</p>
+        </div>
+        <div class="slide-shapes">
+          <div class="{{ slide.shape_class }}" style="background-image: url('{{ slide.shape1.url }}');"></div>
+          <div class="{{ slide.shape_class }} mid" style="background-image: url('{{ slide.shape2.url }}');"></div>
+          <div class="{{ slide.shape_class }} last" style="background-image: url('{{ slide.shape3.url }}');"></div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+
+<section class="product-section" data-aos="fade-up" data-aos-duration="1500">
+  <h2 id="tre">Trending Products</h2>
+  <div class="product-grid">
+    <div class="product-card">
+      <img src="https://i.pinimg.com/474x/15/ce/a0/15cea06c4870432c9872e7b6be6f0ddb.jpg" alt="Product 1">
+      <div class="hover-content">
+        <h6>MADRAID</h6>
+        <p>Size: 24" x 24"<br>Thickness: 27 mm<br>Weight: 13.69kg / sq.ft</p>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <img src="https://i.pinimg.com/474x/12/f9/fe/12f9fe1ae12f6df29a2c923a4a86b433.jpg" alt="Product 2">
+      <div class="hover-content">
+        <h6>SPLENDOR GREY</h6>
+        <p>Size: 12" x 24"<br>Thickness: 25 mm<br>Weight: 12.00kg / sq.ft</p>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <img src="https://i.pinimg.com/474x/bf/ed/ca/bfedcadc1b0f1e9b36fe550a2d57092b.jpg" alt="Product 3">
+      <div class="hover-content">
+        <h6>BRITISH BRICK</h6>
+        <p>Size: 18" x 24"<br>Thickness: 20 mm<br>Weight: 10.55kg / sq.ft</p>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <img src="https://i.pinimg.com/474x/ec/17/d9/ec17d9022ae9aa90465930aeb8a5550d.jpg" alt="Product 4">
+      <div class="hover-content">
+        <h6>ANTIQUE BEIGE</h6>
+        <p>Size: 24" x 24"<br>Thickness: 30 mm<br>Weight: 14.20kg / sq.ft</p>
+      </div>
+    </div>
+  </div> <!-- close product-grid -->
+
+  <!-- Place slider dots outside product-grid -->
+  <div class="slider-dots"></div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- why Meeru section -->
+  <section class="whyMeeru"data-aos="fade-up" data-aos-duration="1500">
+    <div class="whySection">
+      <h1 class="whyM">Why Meeru</h1>
+      <div class="features-row">
+        <div class="feature-item">
+          <div class="feature-icon">
+            <img src="{% static 'image/icon1.png' %}" id="img" style="width: 100px;">
+          </div>
+          <div class="feature-text">Weather Resistant</div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-icon">
+            <img src="{% static 'image/icon2.png' %}" id="img" style="width: 130px;">
+          </div>
+          <div class="feature-text">Diverse Range</div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-icon">
+            <img src="{% static 'image/icon3.png' %}" id="img" style="width: 130px ;">
+          </div>
+          <div class="feature-text">Easy and Fast</div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-icon">
+            <img src="{% static 'image/icon4.png' %}" id="img" style="width: 110px;">
+          </div>
+          <div class="feature-text">Handmade</div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-icon">
+            <img src="{% static 'image/icon5.png' %}" id="img" style="width: 100px;">
+          </div>
+          <div class="feature-text">Made in India</div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-icon">
+            <img src="{% static 'image/icon6.png' %}" style="width: 100px;">
+          </div>
+          <div class="feature-text">Recycled Raw</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <section class="wide-category-section"data-aos="fade-up" data-aos-duration="1500">
+    <h2 id="wide">Wide Category</h2>
+    <div class="carousel-wrapper">
+
+      <!-- Slide 1 -->
+      <div class="carousel-slide active"
+        style="background-image: url('https://images.unsplash.com/photo-1507089947368-19c1da9775ae');">
+        <div class="small-pattern"
+          style="background-image: url('https://www.pioneerbricks.com/wp-content/uploads/2020/12/antique-cladding-stone-design-768x513.jpg');">
+        </div>
+        <div class="carousel-text">Castle Set Pattern</div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="carousel-slide"
+        style="background-image: url('https://i.pinimg.com/736x/6d/db/5d/6ddb5d729fd46c11b76bdaf5bd1daf30.jpg');">
+        <div class="small-pattern"
+          style="background-image: url('https://www.pioneerbricks.com/wp-content/uploads/2020/11/antique-british-brick-cladding-768x576.jpg');">
+        </div>
+        <div class="carousel-text">Modern Brick Wall</div>
+      </div>
+            <!-- Slide 2 -->
+      <div class="carousel-slide"
+        style="background-image: url('https://i.pinimg.com/736x/6d/db/5d/6ddb5d729fd46c11b76bdaf5bd1daf30.jpg');">
+        <div class="small-pattern"
+          style="background-image: url('https://www.pioneerbricks.com/wp-content/uploads/2020/11/antique-british-brick-cladding-768x576.jpg');">
+        </div>
+        <div class="carousel-text">Modern Brick Wall</div>
+      </div>
+            <!-- Slide 2 -->
+      <div class="carousel-slide"
+        style="background-image: url('https://i.pinimg.com/736x/6d/db/5d/6ddb5d729fd46c11b76bdaf5bd1daf30.jpg');">
+        <div class="small-pattern"
+          style="background-image: url('https://www.pioneerbricks.com/wp-content/uploads/2020/11/antique-british-brick-cladding-768x576.jpg');">
+        </div>
+        <div class="carousel-text">Modern Brick Wall</div>
+      </div>
+
+      <!-- Buttons -->
+      <div class="carousel-controls">
+        <button onclick="prevSlide()">&#8592;</button>
+        <button onclick="nextSlide()">&#8594;</button>
+      </div>
+
+    </div>
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <section class="container"data-aos="fade-up" data-aos-duration="1500">
+    <div class="who-we-arer">
+      <!-- Title -->
+      <h1 class="section-title text-center" id="who">Who We Are</h1>
+
+      <!-- Row 1: Text Left, Image Right -->
+      <div class="row align-items-center custom-row">
+        <div class="col-md-6">
+          <h2 class="section-heading">Crafting Excellence in <br>Cultured Stone</h2>
+          <p>
+            Meru Crete Stone is a professional company specializing in the production of all types of cultured stone,
+            with over 60 years of experience in the natural stone industry. We operate our own factory and collaborate
+            with trusted partners to ensure the highest quality in our products. With a well-organized structure, we are
+            committed to efficiently completing your orders while meeting your expectations.
+          </p>
+          <p>
+            Meru Crete Stone is a professional company specializing in the production of all types of cultured stone,
+            with over 60 years of experience in the natural stone industry. We operate our own factory and collaborate
+            with trusted partners to ensure the highest quality in our products. With a well-organized structure, we are
+            committed to efficiently completing your orders while meeting your expectations.
+          </p>
+
+        </div>
+        <div class="col-md-6">
+          <div class="image-container" data-aos="zoom-in-down" data-aos-duration="1500">
+            <img src="{% static 'image/about1 (1).png' %}" class="main-image" alt="Main Image">
+            <img src="https://img.freepik.com/free-vector/factory-building-metal-fence_1308-29978.jpg"
+              class="hover-image" alt="Hover Image">
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 2: Image Left, Text Right -->
+      <div class="row align-items-center custom-row reverse-row">
+
+        <div class="col-md-6">
+          <h2 class="section-heading">Blending Beauty and <br>Functionality</h2>
+          <p>
+            At Meru Crete, we offer a wide range of cultured stone products designed to enhance residential and
+            commercial spaces.
+            Our product line is known for its durability, beauty, and affordability.
+          </p>
+          <p>
+            Meru Crete Stone is a professional company specializing in the production of all types of cultured stone,
+            with over 60 years of experience in the natural stone industry. We operate our own factory and collaborate
+            with trusted partners to ensure the highest quality in our products. With a well-organized structure, we are
+            committed to efficiently completing your orders while meeting your expectations.
+          </p>
+        </div>
+        <div class="col-md-6">
+          <div class="image-container"data-aos="zoom-in-down" data-aos-duration="1500">
+            <img src="{% static 'image/about1 (1).png' %}" class="main-image" alt="Main Image">
+            <img src="https://img.freepik.com/free-vector/factory-building-metal-fence_1308-29978.jpg"
+              class="hover-image" alt="Hover Image">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- cultured stone -->
+  <section class="cultured-stones"data-aos="fade-up" data-aos-duration="1500">
+    <h1 class="featureh" id="cul">Cultured Stones</h1>
+    <p>
+      Cultured stone is a man-made material that's designed to look like natural stone but is lighter and easier to
+      install.
+      It's made by casting high quality concrete and aggregate materials into molds and then staining, spraying or
+      painting
+      them to mimic the look of natural stone.
+    </p>
+
+    <div class="features">
+      <div class="feature-card">
+        <div class="icon">
+          <img src="{% static 'image/cul1.png' %}" id="img" style="width: 115px;">
+        </div>
+        <div>
+          <h3>Range of Offerings</h3>
+          <p>Over 30 styles & 65 colors</p>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon">
+          <img src="{% static 'image/cul2.png' %}" id="img" style="width: 100px;">
+        </div>
+        <div>
+          <h3>Ease of Installation</h3>
+          <p>Lightweight and easy to install in a variety of locations</p>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon">
+          <img src="{% static 'image/cul3.png' %}" id="img" style="width: 100px;">
+        </div>
+        <div>
+          <h3>Range of Applications</h3>
+          <p>Residential interior and exterior, outdoor living, commercial</p>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon">
+          <img src="{% static 'image/cul4.png' %}" id="img" style="width: 100px;">
+        </div>
+        <div>
+          <h3>Maintenance Free</h3>
+          <p>Requires no painting and coating</p>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon">
+          <img src="{% static 'image/cul5.png' %}" id="img" style="width: 115px;">
+        </div>
+        <div>
+          <h3>Weather Resistant</h3>
+          <p>Heat & Dust Resistance</p>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon">
+          <img src="{% static 'image/cul6.png' %}" id="img" style="width: 100px;">
+        </div>
+        <div>
+          <h3>Warranty</h3>
+          <p>Backed by a 50 year's transferable limited warranty</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  
+  <!-- Project section -->
+  <section class="projects-section"data-aos="fade-up" data-aos-duration="1500">
+    <h2 class="projects-heading" id="our">Our Projects</h2>
+    <div class="projects-container">
+
+      <div class="project-card">
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSW5jSrH0q-8OkMKfszmqXuzL9On3QKh0Y_ag&s"
+          alt="Rustic Outdoor Fireplace" class="project-image">
+        <div class="project-content">
+          <h3 class="project-title">Rustic Outdoor Fireplace Transformation</h3>
+          <p class="project-description">
+            Add sophistication to your living room with a sleek accent wall made from our contemporary cultured stone
+            collection...
+          </p>
+          <a href="#" class="read-more">Read More <span>➤</span></a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSW5jSrH0q-8OkMKfszmqXuzL9On3QKh0Y_ag&s"
+          alt="Traditional Court Yard" class="project-image">
+        <div class="project-content">
+          <h3 class="project-title">Traditional Court Yard Room Accent Wall</h3>
+          <p class="project-description">
+            Bring warmth and charm to your backyard with our premium rustic cultured stones...
+          </p>
+          <a href="#" class="read-more">Read More <span>➤</span></a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+
+
+
+
+  <!-- video section -->
+  <section class="unique-patternss" data-aos="fade-up" data-aos-duration="1500">
+    <h1 id="unique">Our Unique Patterns</h1>
+
+    <div id="unique-patterns-container">
+      <div class="pattern-card" id="card-1-pattern" data-video="https://youtu.be/_n5o9-bIGT8?si=S5lc0P1uedfMdTNN">
+        <div class="play-btn"></div>
+      </div>
+      <div class="pattern-card" id="card-2-pattern" data-video="https://youtu.be/_n5o9-bIGT8?si=S5lc0P1uedfMdTNN">
+        <div class="play-btn"></div>
+      </div>
+      <div class="pattern-card" id="card-3-pattern" data-video="https://youtu.be/_n5o9-bIGT8?si=S5lc0P1uedfMdTNN">
+        <div class="play-btn"></div>
+      </div>
+    </div>
+
+    <!-- Local Video Modal -->
+    <div id="video-modal">
+      <div id="video-container">
+        <span id="close-btn">&times;</span>
+        <video id="local-video" controls></video>
+      </div>
+    </div>
+
+
+ </section>
+
+    <!-- Profile Thumbnails -->
+
+    <!-- Profile Testimonial -->
+    <section class="profile-section" data-aos="fade-up" data-aos-duration="1500">
+      <h2 class="testimonial-heading" id="test">Testimonial</h2>
+
+      <div class="testimonial-card">
+        <img id="testimonial-img" src="https://randomuser.me/api/portraits/men/3.jpg" alt="testimonial photo"
+          class="testimonial-photo">
+           <div class="profile-name" id="testimonial-name" style="font-size: 1.5rem ;color: #222;">Prem Kumar</div>
+        <h4 id="testimonial-title">Transforming Our Living Room with Meru</h4>
+        <p id="testimonial-text">
+        “Meru Crete cladding gave our living room a cozy yet elegant look. The quality, finish, and service were outstanding!””
+        </p>
+        <div class="stars">⭐ ⭐ ⭐ ⭐ ⭐</div>
+
+      </div>
+
+      <div class="testimonial-footer">
+        <div class="profile-thumbnails">
+          <div class="profile">
+            <img src="https://randomuser.me/api/portraits/women/1.jpg" alt="user" data-name="Samantha Rao"
+              data-title="Elegant Bedroom Makeover"
+              data-content="“Meru’s products completely transformed our bedroom. The textures gave it a high-end look and the installation was seamless. I couldn't be happier!”">
+          </div>
+
+          <div class="profile">
+            <img src="https://randomuser.me/api/portraits/women/2.jpg" alt="user" data-name="Anjali Mehta"
+              data-title="Perfect Finishing Touch"
+              data-content="“The attention to detail and quality of Meru’s stones were unmatched. The cladding added the perfect finishing touch to our dining room.”">
+          </div>
+
+          <div class="profile active">
+            <img src="https://randomuser.me/api/portraits/men/3.jpg" alt="user" data-name="Prem Kumar"
+              data-title="Transforming Our Living Room with Meru"
+              data-content="““Meru Crete cladding gave our living room a cozy yet elegant look. The quality, finish, and service were outstanding!”">
+          </div>
+
+          <div class="profile">
+            <img src="https://randomuser.me/api/portraits/men/4.jpg" alt="user" data-name="Ravi Singh"
+              data-title="A Stylish Upgrade"
+              data-content="“Meru helped us modernize our office space with their cladding solutions. It now looks stylish and professional!”">
+          </div>
+
+          <div class="profile">
+            <img src="https://randomuser.me/api/portraits/men/5.jpg" alt="user" data-name="Amit Shah"
+              data-title="A Seamless Experience"
+              data-content="“From start to finish, Meru provided excellent service and a top-quality product. The transformation was exactly what we envisioned.”">
+          </div>
+        </div>
+       
+      </div>
+    </section>
+
+
+
+
+
+
+ 
+  <section class="branches-section"data-aos="fade-up" data-aos-duration="1500" >
+    <h2 id="branch">Our Branches</h2>
+    <div class="cards-container">
+
+      <!-- Card 1 -->
+      <div class="branch-card">
+        <div class="icon-circle">
+          <img src="{% static 'image/location2.png' %}" alt="Location Icon">
+        </div>
+        <h3>Bangalore, Karnataka</h3>
+        <p class="phone">+91 8825813923</p>
+        <p class="email">infro@meerucrete.com</p>
+        <div class="address">
+          317-D 10th main road Harohalli Industrial Area,<br>Karnataka
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="branch-card">
+        <div class="icon-circle">
+          <img src="{% static 'image/location2.png' %}" alt="Location Icon">
+        </div>
+        <h3>Mysore, Karnataka</h3>
+        <p class="phone">+91 9944021163</p>
+        <p class="email">infro@meerucrete.com</p>
+        <div class="address">
+          Yadavagiri Industrial Estate, Manjunathapura Main Road,<br>
+          Brindavan Extension 2nd Stage, Mysuru, Karnataka
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="branch-card">
+        <div class="icon-circle">
+          <img src="{% static 'image/location2.png' %}" alt="Location Icon">
+        </div>
+        <h3>Hosur, Tamil Nadu</h3>
+        <p class="phone">+91 9786003054</p>
+        <p class="email">infro@meerucrete.com</p>
+        <div class="address">
+          Sipcot Industrial Estate, Amritha, Kothagondapalli,<br>Tamil Nadu
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+<section>
+  <!-- Retirement Footer Section -->
+  <div class="retirement-footer text-center py-5" data-aos="fade-up" data-aos-duration="1500">
+    <!-- Centered Logo -->
+    <img src="{% static 'image/footerlogo.png' %}" alt="MeruCrete Logo" width="80" class="mb-3">
+
+    <!-- Shining Text -->
+    <h5 class="retirement-shine-text mb-2" id="mu">MERU CRETE</h5>
+    <p>where strength meets precision</p>
+
+    <!-- Social Icons -->
+    <div class="d-flex justify-content-center mb-3">
+      <a href="#" class="text-body-secondary mx-3" aria-label="Instagram">
+       <i class="fab fa-instagram" style="color: white;"></i>
+      </a>
+      <a href="#" class="text-body-secondary mx-3" aria-label="Facebook">
+        <i class="fab fa-facebook " style="color: white;"></i>
+      </a>
+      <a href="#" class="text-body-secondary mx-3" aria-label="X (Twitter)">
+        <i class="fab fa-x-twitter " style="color: white;"></i>
+      </a>
+    </div>
+
+ <!-- copy rights -->
+<div class="footer-text">
+  <p>© 2025 MeeruCrete | All Rights Reserved</p>
+  
+</div>
+
+
+
+  </div>
+</section>
+
+
+
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.6/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+<script>
+const modal = document.getElementById('video-modal');
+const localVideo = document.getElementById('local-video');
+const closeBtn = document.getElementById('close-btn');
+const videoContainer = document.getElementById('video-container');
+
+if (modal && localVideo && closeBtn) {
+  document.querySelectorAll('.pattern-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const videoPath = card.getAttribute('data-video');
+
+      // Remove any previous iframe
+      const existingIframe = videoContainer.querySelector('iframe');
+      if (existingIframe) {
+        existingIframe.remove();
+      }
+
+      if (videoPath.includes('youtu')) {
+        // Hide local video player
+        localVideo.style.display = 'none';
+        localVideo.pause();
+        localVideo.removeAttribute('src');
+
+        // Extract YouTube video ID
+        const videoId = extractYouTubeID(videoPath);
+        if (!videoId) {
+          alert('Invalid YouTube URL');
+          return;
+        }
+
+        // Create iframe for YouTube embed
+        const iframe = document.createElement('iframe');
+        iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+        iframe.width = "100%";
+        iframe.height = "100%";
+        iframe.frameBorder = "0";
+        iframe.allow = "autoplay; encrypted-media";
+        iframe.allowFullscreen = true;
+        videoContainer.appendChild(iframe);
+
+      } else {
+        // Use local video file
+        localVideo.src = videoPath;
+        localVideo.style.display = 'block';
+        localVideo.play();
+      }
+
+      modal.style.display = 'flex';
+    });
+  });
+
+  closeBtn.addEventListener('click', closeModal);
+  window.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+
+  function closeModal() {
+    modal.style.display = 'none';
+    // Stop and reset local video
+    localVideo.pause();
+    localVideo.currentTime = 0;
+    localVideo.removeAttribute('src');
+    // Remove iframe if exists
+    const iframe = videoContainer.querySelector('iframe');
+    if (iframe) iframe.remove();
+  }
+
+  // Helper function to extract YouTube video ID from URL
+  function extractYouTubeID(url) {
+    const regExp = /(?:youtube\.com.*[?&]v=|youtu\.be\/)([^&\n?#]+)/;
+    const match = url.match(regExp);
+    return match ? match[1] : null;
+  }
+}
+document.querySelectorAll('.pattern-card').forEach(card => {
+  const videoPath = card.getAttribute('data-video');
+  if (videoPath.includes('youtu')) {
+    const videoId = extractYouTubeID(videoPath);
+    if (videoId) {
+      const imgUrl = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+      card.style.backgroundImage = `url(${imgUrl})`;
+      card.style.backgroundSize = 'cover';
+      card.style.backgroundPosition = 'center';
+    }
+  }
+});
+
+
+
+
+
+  // === Wide Category Carousel Logic ===
+  let currentSlide = 0;
+  const slides = document.querySelectorAll(".carousel-slide");
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.remove("active");
+      if (i === index) {
+        slide.classList.add("active");
+      }
+    });
+  }
+
+  function nextSlide() {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+  }
+
+  function prevSlide() {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    showSlide(currentSlide);
+  }
+
+  if (slides.length > 0) {
+    setInterval(nextSlide, 5000);
+    showSlide(currentSlide);
+  }
+
+  // === Testimonial Section ===
+  const profileDivs = document.querySelectorAll('.profile');
+  const nameElement = document.getElementById('testimonial-name') || document.getElementById('profile-name');
+  const titleElement = document.getElementById('testimonial-title');
+  const textElement = document.getElementById('testimonial-text') || document.getElementById('testimonial-content');
+  const photoElement = document.getElementById('testimonial-img') || document.getElementById('main-profile-img');
+
+  let testimonialIndex = 0;
+  let autoplayInterval;
+
+  function updateTestimonialByIndex(index) {
+    profileDivs.forEach(p => p.classList.remove('active'));
+    profileDivs[index].classList.add('active');
+
+    const img = profileDivs[index].querySelector('img');
+    if (img && nameElement && titleElement && textElement && photoElement) {
+      nameElement.textContent = img.dataset.name || '';
+      titleElement.textContent = img.dataset.title || '';
+      textElement.textContent = img.dataset.content || '';
+      photoElement.src = img.src;
+    }
+
+    testimonialIndex = index;
+  }
+
+  function startAutoplay() {
+    autoplayInterval = setInterval(() => {
+      testimonialIndex = (testimonialIndex + 1) % profileDivs.length;
+      updateTestimonialByIndex(testimonialIndex);
+    }, 5000);
+  }
+
+  if (profileDivs.length > 0 && nameElement && titleElement && textElement && photoElement) {
+    profileDivs.forEach((div, index) => {
+      div.addEventListener('click', () => {
+        clearInterval(autoplayInterval);
+        updateTestimonialByIndex(index);
+        setTimeout(startAutoplay, 2000);
+      });
+    });
+
+    updateTestimonialByIndex(testimonialIndex);
+    startAutoplay();
+  }
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const slides = document.querySelectorAll('.slide');
+    let index = 0;
+
+    function showSlide(i) {
+      slides.forEach((slide, idx) => {
+        slide.classList.remove('active');
+        if (idx === i) slide.classList.add('active');
+      });
+    }
+
+    if (slides.length > 0) {
+      showSlide(index);
+      setInterval(() => {
+        index = (index + 1) % slides.length;
+        showSlide(index);
+      }, 5000);
+    }
+  });
+</script>
+
+<script>
+  // Hide loader after page loads
+  window.addEventListener('load', () => {
+    const loader = document.getElementById('loader');
+    if (loader) {
+      loader.style.opacity = '0';
+      setTimeout(() => loader.style.display = 'none', 500);
+    }
+  });
+
+  // Back to Top functionality
+  const backToTopBtn = document.getElementById("backToTop");
+  if (backToTopBtn) {
+    window.onscroll = () => {
+      backToTopBtn.style.display =
+        (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) ? "block" : "none";
+    };
+
+    backToTopBtn.onclick = () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+  }
+</script>
+
+<script>
+ function toggleNavbar() {
+  const navbar = document.querySelector('.navbar');
+  const hamburgerBtn = document.querySelector('.hamburger');
+
+  if (navbar && hamburgerBtn) {
+    navbar.classList.toggle('active');
+
+    if (navbar.classList.contains('active')) {
+      // Change to close icon (×)
+      hamburgerBtn.innerHTML = '&times;';  // ×
+    } else {
+      // Change back to hamburger icon (☰)
+      hamburgerBtn.innerHTML = '&#9776;';  // ☰
+    }
+  }
+}
+
+</script>
+<!-- AOS JS -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 1000,
+    once: true
+  });
+</script>
+
+
+</body>
+
+</html>

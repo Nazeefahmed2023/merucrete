@@ -1,0 +1,1339 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MeeruCrete Products</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="{% static 'image/logonav.png' %}">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Roboto&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Add this in the <head> of your HTML -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+  <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap");
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&display=swap');
+
+    body {
+      background: linear-gradient(135deg, #f3f0eb, #e8e2d9, #f5f2ec);
+      color: #ffffff;
+      font-family: 'Montserrat', Arial, sans-serif;
+      margin: 0;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
+
+    }
+
+    /* ------------------------------ */
+    /* SCROLLBAR STYLES */
+    /* ------------------------------ */
+    html::-webkit-scrollbar {
+      width: 1rem;
+    }
+
+    html::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    html::-webkit-scrollbar-thumb {
+      background: var(--yellow);
+    }
+
+
+
+    /* ------------------------------ */
+    /* NAVBAR STYLES */
+    /* ------------------------------ */
+
+    .navbar {
+      background: linear-gradient(to right, #3d0017, #800033, #4f0022);
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      color: white;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0px;
+      /* Fixed gap value */
+      font-size: 31px;
+      color: #ffffff;
+    }
+
+    strong {
+      font-weight: 600;
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    h1,
+    h2 {
+      font-size: 40px;
+      margin-top: 40px;
+    }
+
+    .logo img {
+      height: 90px;
+    }
+
+
+    .nav-links a {
+      margin-left: 30px;
+      text-decoration: none;
+      color: #ffffff;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: rgb(245, 222, 179);
+      font-weight: bold;
+    }
+
+    .nav-links a.active {
+      color: rgb(245, 222, 179);
+      font-weight: bold;
+      border-bottom: 2px solid rgb(245, 222, 179);
+      /* Optional visual */
+    }
+
+
+    /* ------------------------------ */
+    /* Mobile-specific Navbar Styles */
+    /* ------------------------------ */
+
+    /* Between 900px and 250px */
+    @media (max-width: 900px) {
+
+      /* Hide nav-links initially */
+      .nav-links {
+        display: none;
+        /* Hide links on smaller screens */
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        position: absolute;
+        /* Fix the nav to the top */
+        top: 60px;
+        /* Adjust the space from the navbar */
+        left: 0;
+        background-color: #3d0017;
+        /* Set a background color */
+        padding: 20px 0;
+      }
+
+      .nav-links a {
+        margin: 10px 0;
+      }
+
+      /* Show hamburger menu (only on mobile) */
+      .hamburger {
+        display: block;
+        background-color: transparent;
+        border: none;
+        color: #ffffff;
+        font-size: 30px;
+        cursor: pointer;
+      }
+
+      /* When navbar is active, show nav-links */
+      .navbar.active .nav-links {
+        display: flex;
+      }
+    }
+
+    /* Remove nav-links after 900px */
+    @media (min-width: 901px) {
+      .nav-links {
+        display: none !important;
+        /* Hide nav-links on screens greater than 900px */
+      }
+
+      /* Show hamburger button only on smaller screens */
+      .hamburger {
+        display: none !important;
+      }
+    }
+
+    /* Desktop Styles (Larger than 900px) */
+    @media (min-width: 901px) {
+      .nav-links {
+        display: flex !important;
+        /* Always show nav-links on larger screens */
+        flex-direction: row;
+        /* Make nav links appear in a row */
+        justify-content: flex-end;
+        /* Align links to the right */
+      }
+
+      .nav-links a {
+        margin-left: 30px;
+      }
+    }
+
+    /* For screens between 201px and 300px */
+    @media (max-width: 400px) and (min-width: 301px) {
+      .nav-links {
+        flex-direction: column;
+        font-size: 10px;
+      }
+
+      .logo {
+        display: flex;
+
+        align-items: center;
+        gap: 0px;
+        font-size: 18px;
+        color: #ffffff;
+      }
+
+      .nav-links a {
+        margin: 8px 0;
+        font-size: 14px;
+      }
+
+      .logo img {
+        height: 27px;
+      }
+
+      .logo span {
+        font-size: 1.2rem;
+      }
+
+      .hamburger {
+        font-size: 25px;
+      }
+    }
+
+    /* For screens between 201px and 300px */
+    @media (max-width: 300px) and (min-width: 250px) {
+      .nav-links {
+        flex-direction: column;
+        font-size: 10px;
+      }
+
+      .logo {
+        display: flex;
+
+        align-items: center;
+        gap: 0px;
+        font-size: 18px;
+        color: #ffffff;
+      }
+
+      .nav-links a {
+        margin: 8px 0;
+        font-size: 14px;
+      }
+
+      .logo img {
+        height: 27px;
+      }
+
+      .logo span {
+        font-size: 1.2rem;
+      }
+
+      .hamburger {
+        font-size: 25px;
+      }
+    }
+
+    @media (max-width: 250px) and (min-width: 201px) {
+
+      .logo {
+        display: flex;
+
+        align-items: center;
+        gap: 0px;
+        font-size: 18px;
+        color: #ffffff;
+      }
+
+      .logo img {
+        height: 21px;
+      }
+
+      .logo span {
+        font-size: 1rem;
+      }
+
+      .hamburger {
+        font-size: 25px;
+      }
+    }
+
+    /* For screens between 101px and 200px */
+    @media (max-width: 201px) and (min-width: 101px) {
+      .nav-links {
+        flex-direction: column;
+        font-size: 8px;
+      }
+
+      .nav-links a {
+        margin: 6px 0;
+        font-size: 12px;
+      }
+
+      .logo img {
+        height: 26px;
+      }
+
+      .logo span {
+        font-size: 8px;
+      }
+
+      .hamburger {
+        font-size: 22px;
+      }
+    }
+
+    /* For screens 100px and below */
+    @media (max-width: 100px) {
+      .nav-links {
+        flex-direction: column;
+        font-size: 10px;
+      }
+
+      .nav-links a {
+        margin: 4px 0;
+        font-size: 10px;
+      }
+
+      .logo img {
+        max-height: 25px;
+      }
+
+      .logo span {
+        font-size: 0.9rem;
+      }
+
+      .hamburger {
+        font-size: 24px;
+      }
+    }
+
+
+    /* Reset and base styles */
+
+    /* CONTACT SECTION */
+    .contact {
+      background: #727272;
+      padding: 60px 0;
+    }
+
+    .contact .heading {
+      font-size: 36px;
+      text-align: center;
+      margin-top: 40px;
+      padding: 0 20px;
+      color: #000;
+      text-transform: capitalize;
+    }
+
+    /* ROW: form left, map right */
+    .contact .row {
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      max-width: 1200px;
+      margin: 0 auto;
+      background: #ecf0f3;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      border-radius: 4rem;
+      overflow: hidden;
+    }
+
+    /* FORM SECTION */
+    .contact .row form {
+      flex: 1 1 50%;
+      background: #ecf0f3;
+      padding: 60px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .contact .row form h3 {
+      display: none;
+    }
+
+    .contact .row form .box {
+      margin-bottom: 20px;
+      width: 100%;
+      padding: 14px 16px;
+      background: #fff;
+      border: none;
+      font-size: 16px;
+      color: #333;
+      border-radius: 2rem;
+      box-shadow: inset 0 0 0 1px #ccc;
+    }
+
+    .contact .row form textarea {
+      height: 120px;
+      resize: none;
+    }
+
+    /* SUBMIT BUTTON */
+    .contact .row form .btn {
+      width: fit-content;
+      padding: 12px 24px;
+      background: linear-gradient(to right, #3d0017, #800033, #4f0022);
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 4rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .contact .row form .btn:hover {
+      background: #dacc03;
+      /* ✅ this overrides gradient */
+      color: #000;
+      /* Optional: improves contrast */
+    }
+
+
+    /* MAP SECTION */
+    .contact .row .map {
+      flex: 1 1 50%;
+      min-height: 100%;
+      border: none;
+    }
+
+    /* RESPONSIVE STYLES */
+    @media (max-width: 992px) {
+      .contact .row {
+        flex-direction: column;
+        border-radius: 2rem;
+      }
+
+      .contact .row form,
+      .contact .row .map {
+        flex: 1 1 100%;
+        width: 100%;
+      }
+
+      .contact .row form {
+        padding: 40px 20px;
+      }
+
+      .contact .heading {
+        font-size: 28px;
+        padding: 0 10px;
+      }
+    }
+
+    /* Scroll Animation */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.6s ease-out;
+    }
+
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+
+    /* ================================
+   UNIVERSAL FOOTER SECTION
+================================ */
+
+    /* Background */
+    .retirement-footer {
+      background-image: url("/static/image/footer.png");
+      background-size: cover;
+      background-position: center;
+      height: auto;
+      padding: 3rem 1rem;
+      color: white;
+      text-align: center;
+    }
+
+    /* Footer Logo/Image */
+    .retirement-footer .footer-logo,
+    img.mb-3 {
+      width: 20%;
+      height: auto;
+      margin-bottom: 1rem;
+    }
+
+    /* Footer Main Heading */
+    #mu {
+      font-size: 3rem;
+      color: #b88d02;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Shining Gradient Text Animation */
+    .retirement-shine-text {
+      font-weight: bold;
+      font-size: 1.5rem;
+      background: linear-gradient(90deg,
+          #ffffff 0%,
+          #ffcc70 20%,
+          #ffffff 40%,
+          #ffcc70 60%,
+          #ffffff 80%);
+      background-size: 200% auto;
+      color: #b88d02;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: retirement-shine 6s linear infinite;
+      margin-bottom: 0.3rem;
+    }
+
+    /* Animation Keyframes */
+    @keyframes retirement-shine {
+      to {
+        background-position: 200% center;
+      }
+    }
+
+    /* Tagline */
+    .retirement-footer p {
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #f0f0f0;
+    }
+
+    /* Social Icons Container */
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Social Icon Links */
+    .social-icons a {
+      margin: 0 15px;
+      font-size: 1.8rem;
+      color: white;
+      transition: transform 0.3s, color 0.3s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+    }
+
+    /* Hover Effects */
+    .social-icons a:hover {
+      transform: scale(1.2);
+      color: #ffcc70;
+    }
+
+    /* Copyright */
+    .retirement-footer p.text-white {
+      margin-bottom: 0.3rem;
+      font-size: 0.9rem;
+      font-weight: 400;
+    }
+
+    /* ================================
+   RESPONSIVE FOOTER STYLES
+================================ */
+
+    @media (max-width: 768px) {
+
+      .retirement-footer .footer-logo,
+      img.mb-3 {
+        width: 40%;
+      }
+
+      #mu {
+        font-size: 2.2rem;
+      }
+
+      .retirement-shine-text {
+        font-size: 1.2rem;
+      }
+
+      .social-icons a {
+        font-size: 1.5rem;
+        margin: 0 12px;
+      }
+
+      .retirement-footer p {
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+
+      .retirement-footer .footer-logo,
+      img.mb-3 {
+        width: 60%;
+      }
+
+      #mu {
+        font-size: 1.8rem;
+      }
+
+      .retirement-shine-text {
+        font-size: 1rem;
+      }
+
+      .social-icons a {
+        font-size: 1.3rem;
+        margin: 0 10px;
+      }
+
+      .retirement-footer p {
+        font-size: 0.85rem;
+      }
+    }
+
+    @media (max-width: 320px) {
+
+      .retirement-footer .footer-logo,
+      img.mb-3 {
+        width: 80%;
+      }
+
+      #mu {
+        font-size: 1.5rem;
+      }
+
+      .retirement-shine-text {
+        font-size: 0.9rem;
+      }
+
+      .social-icons a {
+        font-size: 1.1rem;
+        margin: 0 8px;
+      }
+
+      .retirement-footer p {
+        font-size: 0.8rem;
+      }
+    }
+
+    .footer-text {
+      margin: 0;
+      padding: 0;
+      line-height: 1.2;
+    }
+
+    .footer-text p {
+      margin: 0;
+      padding: 0;
+      font-size: 1rem;
+      color: white;
+    }
+
+    /* Slightly lighter color for the developer name */
+    .footer-text p:last-child {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
+      margin-top: 0.2rem;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 576px) {
+      .footer-text p {
+        font-size: 0.8rem;
+      }
+
+      .footer-text p:last-child {
+        font-size: 0.67rem;
+      }
+    }
+
+
+
+
+
+    .company-details {
+      background: linear-gradient(135deg, #f3f0eb, #e8e2d9, #f5f2ec);
+      padding: 60px 20px;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .details-container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 50px;
+      /* consistent 50px gap */
+      text-align: center;
+    }
+
+    .detail-box {
+      flex: 1 1 250px;
+      /* flexible width, minimum 250px */
+      max-width: 300px;
+      background: none;
+      padding: 0;
+      border: none;
+      box-shadow: none;
+      transition: transform 0.3s ease;
+    }
+
+    .detail-box:hover {
+      transform: translateY(-5px);
+    }
+
+    .detail-box h3 {
+      font-size: 16px;
+      margin-top: 20px;
+      margin-bottom: 10px;
+      color: #000;
+      font-weight: 600;
+    }
+
+    .detail-box h3 i {
+      display: inline-block;
+      font-size: 24px;
+      color: #fff;
+      background: linear-gradient(to right, #3d0017, #800033, #4f0022);
+      padding: 20px;
+      border-radius: 50%;
+    }
+
+    .detail-box p {
+      color: #777;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .detail-box a {
+      color: #fcbf49;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .detail-box a:hover {
+      text-decoration: underline;
+    }
+
+    /* Mobile responsive behavior */
+    @media (max-width: 768px) {
+      .details-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .detail-box {
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+
+
+    .contact .row .map {
+      flex: 1 1 50%;
+      height: 100%;
+      min-height: 500px;
+      border: 0;
+    }
+
+    #get {
+      font-size: 2rem;
+      color: #000;
+      margin-left: 8rem;
+    }
+
+    /* 1300px */
+    @media (max-width: 1300px) {
+      #get {
+        font-size: 1.9rem;
+        margin-left: 7rem;
+      }
+    }
+
+    /* 1200px */
+    @media (max-width: 1200px) {
+      #get {
+        font-size: 1.8rem;
+        margin-left: 6rem;
+      }
+    }
+
+    /* 1100px */
+    @media (max-width: 1100px) {
+      #get {
+        font-size: 1.7rem;
+        margin-left: 5rem;
+      }
+    }
+
+    /* 1000px */
+    @media (max-width: 1000px) {
+      #get {
+        font-size: 1.6rem;
+        margin-left: 4rem;
+      }
+    }
+
+    /* 900px */
+    @media (max-width: 900px) {
+      #get {
+        font-size: 1.5rem;
+        margin-left: 3.5rem;
+      }
+    }
+
+    /* 800px */
+    @media (max-width: 800px) {
+      #get {
+        font-size: 1.4rem;
+        margin-left: 3rem;
+      }
+    }
+
+    /* 700px */
+    @media (max-width: 700px) {
+      #get {
+        font-size: 1.3rem;
+        margin-left: 2.5rem;
+      }
+    }
+
+    /* 600px */
+    @media (max-width: 600px) {
+      #get {
+        font-size: 1.2rem;
+        margin-left: 2rem;
+      }
+    }
+
+    /* 500px */
+    @media (max-width: 500px) {
+      #get {
+        font-size: 1.1rem;
+        margin-left: 1.5rem;
+      }
+    }
+
+    /* 400px and below - center the element */
+    @media (max-width: 400px) {
+      #get {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        display: block;
+      }
+    }
+
+    /* Optional tweak for 300px if needed */
+    @media (max-width: 300px) {
+      #get {
+        font-size: 0.9rem;
+      }
+    }
+
+    /* 200px */
+    @media (max-width: 200px) {
+      #get {
+        font-size: 0.8rem;
+
+      }
+    }
+
+    /* 100px */
+    @media (max-width: 100px) {
+      #get {
+        font-size: 0.7rem;
+
+      }
+    }
+
+    /* Product Dropdown */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #4f0022;
+      min-width: 160px;
+      z-index: 1;
+      border-radius: 4px;
+      top: 100%;
+      left: 0;
+    }
+
+    .dropdown-content a {
+      color: white;
+      padding: 10px 16px;
+      text-decoration: none;
+      display: block;
+      font-weight: 400;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #800033;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    /* Preloader Base */
+    #loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #f3f0eb, #e8e2d9, #f5f2ec);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease;
+    }
+
+    /* Rotating Border */
+    .loader-outer {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 5px solid transparent;
+      border-top: 5px solid #d4452d;
+      border-right: 5px solid #d4452d;
+      animation: rotate 1.5s linear infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Circular Border */
+    .loader-circle {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #f3f0eb, #e8e2d9, #f5f2ec);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 10px;
+      animation: pulse 1.5s infinite ease-in-out;
+    }
+
+    /* Logo in Center */
+    .loader-logo {
+      max-width: 80px;
+      height: auto;
+      margin-bottom: 5px;
+    }
+
+    /* MEERU CRETE Text */
+    .loader-text {
+      font-size: 16px;
+      font-weight: bold;
+      color: #222;
+      letter-spacing: 1px;
+      margin-bottom: 2px;
+    }
+
+    /* Loading... Text */
+    .loader-subtext {
+      font-size: 12px;
+      font-weight: 600;
+      color: #a13b2b;
+    }
+
+    /* Animation */
+    @keyframes pulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.05);
+      }
+    }
+
+    /* Back to Top */
+    #backToTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      display: none;
+      background: linear-gradient(to right, #bfa53a, #ffdf00, #b8860b);
+      color: rgb(59, 0, 0);
+      border: none;
+      border-radius: 50%;
+      padding: 10px 20px;
+      font-size: 20px;
+      cursor: pointer;
+      z-index: 1000;
+      transition: background 0.3s;
+    }
+
+    #backToTop:hover {
+      background-color: #444;
+    }
+
+    /* ✅ Responsive Adjustments */
+    @media (max-width: 768px) {
+      #backToTop {
+        bottom: 20px;
+        right: 20px;
+        font-size: 18px;
+        padding: 8px 16px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      #backToTop {
+        bottom: 15px;
+        right: 15px;
+        font-size: 16px;
+        padding: 6px 14px;
+      }
+    }
+
+    @media (max-width: 320px) {
+      #backToTop {
+        bottom: 10px;
+        right: 10px;
+        font-size: 14px;
+        padding: 5px 12px;
+      }
+    }
+  </style>
+
+<body>
+
+  <!-- Custom Preloader -->
+  <div id="loader">
+    <div class="loader-circle">
+      <img src="{% static 'image/logo.png' %}" alt="Meeru Logo" class="loader-logo">
+
+      <div class="loader-subtext">LOADING...</div>
+    </div>
+  </div>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" title="Back to Top">↑</button>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <!-- Logo Image -->
+        <img src="{% static 'image/logonav.png' %}" alt="Logo" />
+        <span>MERU <strong>CRETE</strong></span>
+      </div>
+
+      <!-- Hamburger Icon (Visible on mobile) -->
+      <button class="hamburger" onclick="toggleNavbar()">&#9776;</button>
+
+      <!-- Navigation Links -->
+      <nav class="nav-links">
+        <a href="/" class="{% if request.path == '/' %}active{% endif %}" id="home">Home</a>
+
+        <div class="dropdown">
+          <a href="#" class="{% if request.path|slice:':8' == '/product' %}active{% endif %}">Product ▾</a>
+
+          <div class="dropdown-content">
+            <a href="/products" class="{% if request.path == '/products' %}active{% endif %}">Collection</a>
+            <a href="/product-catalogue"
+              class="{% if request.path == '/product-catalogue' %}active{% endif %}">Catalogue</a>
+          </div>
+        </div>
+        <a href="/about" class="{% if request.path|slice:':6' == '/about' %}active{% endif %}">About Us</a>
+        <a href="/contact" class="{% if request.path|slice:':8' == '/contact' %}active{% endif %}">Contact Us</a>
+
+      </nav>
+
+
+    </div>
+  </header>
+
+
+
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="row">
+      <h1 class="heading animate-on-scroll">CONTACTUS</h1>
+      <h2 id="get" class="animate-on-scroll">Get in Touch </h2>
+
+
+      <!-- Contact Form -->
+      <form method="POST" id="form" class="animate-on-scroll">
+        {% csrf_token %}
+        <h3>Get in Touch <style></style>
+        </h3>
+
+        {% if request.GET.plan %}
+        <p style="font-size: 20px; font-weight: bold;">Selected Plan: {{ request.GET.plan }}</p>
+        {% endif %}
+
+        <input type="text" name="name" placeholder="Name" class="box" required>
+        <input type="email" name="email" placeholder="Email" class="box" required>
+        <input type="text" name="phone" placeholder="Phone" class="box" required>
+        <textarea name="message" placeholder="Message" class="box" cols="30" rows="10" required></textarea>
+        <input type="submit" value="Send Message" class="btn">
+      </form>
+
+      <!-- Google Map -->
+      <iframe class="map animate-on-scroll"
+        src="https://www.google.com/maps?q=317-D%2010th%20main%20road%20Harohalli%20Industrial%20Area,%20Karnataka%20562112&output=embed"
+        allowfullscreen="" loading="lazy">
+      </iframe>
+    </div>
+  </section>
+
+
+  {% if messages %}
+  {% for message in messages %}
+  <div id="success-alert" style="
+            padding: 15px;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            font-size: 16px;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            display: none;
+        ">
+    {{ message }}
+    <span onclick="this.parentElement.style.display='none';" style="
+              position: absolute;
+              right: 15px;
+              top: 50%;
+              transform: translateY(-50%);
+              cursor: pointer;
+              font-size: 20px;
+              font-weight: bold;
+          ">&times;</span>
+  </div>
+  {% endfor %}
+  {% endif %}
+
+  <script>
+    // Display the success alert
+    window.onload = function () {
+      const alertBox = document.getElementById('success-alert');
+      if (alertBox) {
+        alertBox.style.display = 'block';  // Show the alert box
+        setTimeout(() => {
+          alertBox.style.display = 'none'; // Hide the alert after 5 seconds
+        }, 5000);  // 5 seconds
+      }
+    };
+  </script>
+
+
+
+
+
+  </div>
+  </section>
+
+
+
+  <section class="company-details">
+    <div class="details-container">
+
+      <!-- Head Office -->
+      <div class="detail-box">
+        <h3><i class="fas fa-map-marker-alt"></i> Head Office</h3>
+        <p>317-D, 10th Main Road,<br>Harohalli Industrial Area,<br>Karnataka, India - 562112</p>
+      </div>
+
+      <!-- Mysuru Branch -->
+      <div class="detail-box">
+        <h3><i class="fas fa-map-marker-alt"></i> Mysuru Branch</h3>
+        <p>Yadavagiri Industrial Estate,<br>Manjunathapura Main Road,<br>Brindavan Extension 2nd Stage,<br>Mysuru,
+          Karnataka</p>
+      </div>
+
+      <!-- Tamil Nadu Branch -->
+      <div class="detail-box">
+        <h3><i class="fas fa-map-marker-alt"></i> Tamil Nadu Branch</h3>
+        <p>SIPCOT Industrial Estate,<br>Amritha, Kothagondapalli,<br>Tamil Nadu</p>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="detail-box">
+        <h3><i class="fas fa-phone-alt"></i> Contact</h3>
+        <p>Phone: <a href="tel:+919876543210">+91 98765 43210</a><br>
+          Email: <a href="mailto:sales@meerucrete.com">sales@meerucrete.com</a></p>
+      </div>
+
+      <!-- Working Hours -->
+      <div class="detail-box">
+        <h3><i class="fas fa-clock"></i> Working Hours</h3>
+        <p>Monday – Saturday: 9:00 AM – 6:00 PM<br>
+          Sunday: Closed</p>
+      </div>
+
+      <!-- Legal Info -->
+      <div class="detail-box">
+        <h3><i class="fas fa-id-card"></i> GST & Legal</h3>
+        <p>GST No: 29ABCDE1234F1Z5<br>
+          CIN: U269XXKA2020PTC123456</p>
+      </div>
+
+    </div>
+  </section>
+  <section>
+    <!-- Retirement Footer Section -->
+    <div class="retirement-footer text-center py-5" data-aos="fade-up" data-aos-duration="1500">
+
+      <!-- Footer Logo -->
+      <img src="{% static 'image/footerlogo.png' %}" alt="MeeruCrete Logo" class="footer-logo mb-3">
+
+      <!-- Brand Name with Shine Effect -->
+      <h5 class="retirement-shine-text mb-2" id="mu">MERU CRETE</h5>
+      <p>where strength meets precision</p>
+
+      <!-- Social Icons -->
+      <div class="social-icons">
+        <a href="#" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="#" aria-label="Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+        <a href="#" aria-label="Twitter">
+          <i class="fab fa-x-twitter"></i>
+        </a>
+      </div>
+
+      <!-- copy rights -->
+
+      <!-- copy rights -->
+      <div class="footer-text">
+        <p>© 2025 MeeruCrete | All Rights Reserved</p>
+
+      </div>
+
+    </div>
+  </section>
+
+
+
+
+
+  <script>
+    // Hide loader after page loads
+    window.addEventListener('load', () => {
+      const loader = document.getElementById('loader');
+      if (loader) {
+        loader.style.opacity = '0';
+        setTimeout(() => loader.style.display = 'none', 500);
+      }
+    });
+
+    // Back to Top functionality
+    const backToTopBtn = document.getElementById("backToTop");
+    if (backToTopBtn) {
+      window.onscroll = () => {
+        backToTopBtn.style.display =
+          (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) ? "block" : "none";
+      };
+
+      backToTopBtn.onclick = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      };
+    }
+  </script>
+  <!-- AOS JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+  </script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/js/lightgallery.min.js"></script>
+
+  <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+
+  <!-- Custom JS File Link  -->
+  <script src="js/script.js"></script>
+
+  <script>
+    function toggleNavbar() {
+      document.querySelector('.navbar').classList.toggle('active');
+    }
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const elements = document.querySelectorAll(".animate-on-scroll");
+
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+
+      elements.forEach(el => observer.observe(el));
+    });
+  </script>
+
+
+
+</body>
+
+</html>

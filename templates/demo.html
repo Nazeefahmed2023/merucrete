@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Testimonial Section</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #fff;
+      color: #000;
+    }
+
+    .testimonial-section {
+      text-align: center;
+      padding: 60px 20px;
+      background: #fff;
+    }
+
+    .testimonial-section h2 {
+      font-size: 40px;
+      margin-bottom: 40px;
+    }
+
+    .testimonial-box {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.05);
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 40px 30px;
+      transition: transform 0.3s ease;
+      animation: fadeIn 1s ease forwards;
+      opacity: 0;
+    }
+
+    .testimonial-box h3 {
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    .testimonial-box p {
+      font-size: 17px;
+      line-height: 1.7;
+      color: #333;
+    }
+
+    .stars {
+      color: orange;
+      margin: 20px 0;
+      font-size: 24px;
+    }
+
+    .testimonial-footer {
+      background: #000;
+      padding: 50px 20px;
+      color: #fff;
+      text-align: center;
+    }
+
+    .user-images {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .user-images img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #fff;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .user-images img:hover {
+      transform: scale(1.1);
+    }
+
+    .user-name {
+      font-size: 20px;
+      color: #fff;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .active {
+      transform: scale(1.4) !important;
+      z-index: 10;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      .testimonial-section h2 {
+        font-size: 32px;
+      }
+
+      .testimonial-box h3 {
+        font-size: 18px;
+      }
+
+      .testimonial-box p {
+        font-size: 15px;
+      }
+
+      .user-images img {
+        width: 50px;
+        height: 50px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="testimonial-section">
+    <h2>Testimonial</h2>
+    <div class="testimonial-box" id="testimonialBox">
+      <h3 id="testimonialTitle">Transforming Our Living Room with Meru</h3>
+      <p id="testimonialMessage">
+        "Choosing Meru Crete cladding for our living room accent wall was the best decision we made during our renovation. The rich textures and colors blend perfectly with our decor, creating a cozy yet elegant atmosphere. The installation team was skilled, courteous, and left no mess behind. The quality of the stones is top-notch, and they’ve truly elevated the aesthetics of our home. We’re absolutely thrilled with the results!"
+      </p>
+      <div class="stars">
+        ⭐ ⭐ ⭐ ⭐
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonial-footer">
+    <div class="user-images" id="userGallery">
+      <img src="user1.jpg" alt="User 1" data-name="Prem Kumar" data-title="Transforming Our Living Room with Meru" data-msg="Choosing Meru Crete cladding for our living room accent wall was the best decision...">
+      <img src="user2.jpg" alt="User 2" data-name="Aisha Rao" data-title="An Elegant Entryway Upgrade" data-msg="Meru Crete helped turn our entryway into a luxurious and welcoming space. Everyone compliments it!">
+      <img src="user3.jpg" alt="User 3" data-name="Rahul Mehra" data-title="Sophistication with Simplicity" data-msg="The textures and shades from Meru Crete added just the right amount of charm to our modern interior.">
+      <img src="user4.jpg" alt="User 4" data-name="Neha Singh" data-title="Backyard Beauty Revamp" data-msg="We used Meru for our outdoor wall, and now our backyard feels like a resort!">
+      <img src="user5.jpg" alt="User 5" data-name="Vikram Joshi" data-title="Bold Style, Great Finish" data-msg="Impressed by the bold designs and professional finish—Meru Crete is now my go-to brand!">
+    </div>
+    <div class="user-name" id="userName">Prem Kumar</div>
+  </section>
+
+  <script>
+    const gallery = document.getElementById('userGallery');
+    const images = gallery.querySelectorAll('img');
+    const nameEl = document.getElementById('userName');
+    const titleEl = document.getElementById('testimonialTitle');
+    const msgEl = document.getElementById('testimonialMessage');
+    const testimonialBox = document.getElementById('testimonialBox');
+
+    images.forEach(img => {
+      img.addEventListener('click', () => {
+        images.forEach(i => i.classList.remove('active'));
+        img.classList.add('active');
+        nameEl.textContent = img.dataset.name;
+        titleEl.textContent = img.dataset.title;
+        msgEl.textContent = img.dataset.msg;
+        testimonialBox.style.animation = 'none';
+        testimonialBox.offsetHeight;
+        testimonialBox.style.animation = '';
+      });
+    });
+  </script>
+</body>
+</html>
