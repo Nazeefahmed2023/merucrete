@@ -5,7 +5,7 @@
             "src": "merucrete/wsgi.py",
             "use": "@vercel/python",
             "config": {
-                "maxlamdasize": "15mb",
+                "maxLambdaSize": "15mb",
                 "runtime": "python3.9"
             }
         },
@@ -24,7 +24,7 @@
         },
         {
             "src": "/(.*)",
-            "user": "project_name/wsgi.py"
+            "dest": "merucrete/wsgi.py"
         }
     ]
 }
