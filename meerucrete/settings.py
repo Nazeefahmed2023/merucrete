@@ -10,7 +10,8 @@ SECRET_KEY = config('SECRET_KEY')
 import os
 
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
-ALLOWED_HOSTS = ['.vercel.app', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['.vercel.app', '.now.sh', '127.0.0.1', 'localhost']
+
   # Change to actual domain in production
 
 # Installed apps
