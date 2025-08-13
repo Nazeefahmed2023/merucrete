@@ -7,8 +7,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Security
 SECRET_KEY = config('SECRET_KEY')
-DEBUG= [ '.vercel.app','127.0.0.1','.now.sh']
-ALLOWED_HOSTS = ['*']  # Change to actual domain in production
+import os
+
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
+ALLOWED_HOSTS = ['.vercel.app', '127.0.0.1', 'localhost']
+  # Change to actual domain in production
 
 # Installed apps
 INSTALLED_APPS = [
@@ -81,7 +84,7 @@ USE_TZ = True
 
 # Static & Media
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 
 STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles_build','static')
 
