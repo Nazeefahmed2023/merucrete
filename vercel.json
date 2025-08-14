@@ -2,7 +2,7 @@
     "version": 2,
     "builds": [
         {
-            "src": "merucrete/wsgi.py",
+            "src": "meerucrete/wsgi.py",
             "use": "@vercel/python",
             "config": {
                 "maxLambdaSize": "50mb",
@@ -24,7 +24,7 @@
         },
         {
             "src": "/(.*)",
-            "dest": "merucrete/wsgi.py"
+            "dest": "meerucrete/wsgi.py"
         }
     ]
 }

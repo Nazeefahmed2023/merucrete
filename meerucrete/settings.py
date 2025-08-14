@@ -1,18 +1,19 @@
 from pathlib import Path
-from decouple import config  # Load from .env
+from decouple import config
 import os
 
-# Paths
+# Base directory
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Security
 SECRET_KEY = config('SECRET_KEY')
-import os
-
-DEBUG = os.environ.get('DEBUG', 'False') == 'True'
-ALLOWED_HOSTS = ['.vercel.app', '.now.sh', '127.0.0.1', 'localhost']
-
-  # Change to actual domain in production
+DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
+ALLOWED_HOSTS = [
+    '.vercel.app',
+    '.now.sh',
+    '127.0.0.1',
+    'localhost'
+]
 
 # Installed apps
 INSTALLED_APPS = [
@@ -36,7 +37,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# URL and Templates
+# URL config
 ROOT_URLCONF = 'meerucrete.urls'
 
 TEMPLATES = [
@@ -61,15 +62,15 @@ WSGI_APPLICATION = 'meerucrete.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('DB_NAME'),      # e.g., meerucrete_db
-        'USER': config('DB_USER'),      # e.g., postgres
-        'PASSWORD': config('DB_PASSWORD'),  # e.g., 1234
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
         'HOST': config('DB_HOST', default='localhost'),
         'PORT': config('DB_PORT', default='5432'),
     }
 }
 
-# Password validators
+# Password validation
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
@@ -83,16 +84,16 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
-# Static & Media
+# Static files
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
+STATICFILES_DIRS = [BASE_DIR / "static"]
+STATIC_ROOT = BASE_DIR / "staticfiles_build" / "static"
 
-STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles_build','static')
-
+# Media files
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = BASE_DIR / 'media'
 
-# Email
+# Email settings
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
@@ -100,7 +101,10 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-SUPABASE_URL = "https://nzzypbojewrirmtnrbsq.supabase.co"
-SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im56enlwYm9qZXdyaXJtdG5yYnNxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTUxMDM3NjMsImV4cCI6MjA3MDY3OTc2M30.Vs6vna9R5WRq-BixVxanqFJtE9CgK0Iqn1spg_G7xfk"
-SUPABASE_BUCKET = "mrucretebckt"  # create this in Supabase Storage
+
+# Supabase settings
+SUPABASE_URL = config('SUPABASE_URL')
+SUPABASE_KEY = config('SUPABASE_KEY')
+SUPABASE_BUCKET = config('SUPABASE_BUCKET', default="mrucretebckt")
+
 
